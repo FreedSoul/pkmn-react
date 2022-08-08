@@ -2,6 +2,7 @@ import Head from "next/head"
 import styles from "../styles/Home.module.css"
 import { useState, useRef, useEffect } from "react"
 import Pokemon from "../components/pokemon"
+import { DebounceInput } from "react-debounce-input"
 
 export default function Home() {
 
@@ -9,10 +10,6 @@ export default function Home() {
 
   const url = `https://pokeapi.co/api/v2/pokemon/`
   const hola = useRef()
-  //!day1
-  //? function fetcher(url){
-  // ?  fetch(url).then((res) => res.json())
-  // ?}
 
   const handleSubmit = (event) =>{
     event.preventDefault()
@@ -24,6 +21,13 @@ export default function Home() {
     //   console.log({url})
     // },300)
     // return () => clearTimeout(timer)
+    // let timerId
+    // return (...args) => {
+    //   clearTimeout(timerId)
+    //   timerId = setTimeout(() => {
+    //     callback(...args)
+    //   }, wait)
+    // }
   })
 
   return (
@@ -34,7 +38,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>The Pokedex App</h1>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
           value={pkname}
           onChange={(event) => setPkname(event.target.value)}
@@ -43,6 +47,16 @@ export default function Home() {
           name="pkname"
           ref={hola}
         />
+        <DebounceInput
+          value={pkname}
+          onChange={(event) => setPkname(event.target.value)}
+          // onSubmit={ref.fieldName.value=""}
+          type="text"
+          name="pkname"
+          ref={hola}
+          debounceTimeout={500}
+          minLength={2}
+        ></DebounceInput>
         <button>enviar</button>
       </form>
       <Pokemon name={pkname !== "" ? pkname : "bulbasaur"} url={url} />

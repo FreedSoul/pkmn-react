@@ -14,7 +14,7 @@ export default function Pokemon({ name, url }) {
   //? struggling with objects passed as props,func argument is obj name,
   //? prop in the call of component is the key inside object, to avoid this, use destructuring func({props})
 
-  const {  data: pkmn, error:pkmnError } = useSWR(`${url}${name}`, fetcher, {
+  const { data: pkmn, error: pkmnError } = useSWR(`${url}${name}`, fetcher, {
     revalidateOnFocus: false,
   })
   const { data: species, error: speciesError } = useSWR(
@@ -32,23 +32,21 @@ export default function Pokemon({ name, url }) {
       revalidateOnFocus: false,
     }
   )
-  const pkmnevoname =
-    evolution?.chain.evolves_to[0]?.species.name
-  const Evo2 = Evolutions(pkmnevoname, url, evolution)
+  const Evo2 = Evolutions(
+    evolution?.chain.evolves_to[0]?.species.name,
+    url,
+    evolution
+  )
   const Evo3 = Evolutions(
     evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name,
     url,
     evolution
   )
-  const Evo = Evolutions(
-    evolution?.chain.species.name,
-    url,
-    evolution
-  )
+  const Evo = Evolutions(evolution?.chain.species.name, url, evolution)
 
-  if(pkmnError){
+  if (pkmnError) {
     return <div>no pokemon</div>
-  }  
+  }
   if (!pkmn) {
     return <div>pkmn cargando...</div>
   }
@@ -68,7 +66,7 @@ export default function Pokemon({ name, url }) {
   // console.log(evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name)
 
   return (
-    <div className={styles['fetched-container']}>
+    <div className={styles["fetched-container"]}>
       {/* serached pkmn */}
       <PrintPkmn
         name={pkmn.name}
@@ -84,7 +82,7 @@ export default function Pokemon({ name, url }) {
           name={evolution?.chain.evolves_to[0]?.species.name}
           urlimg={Evo2.urlimg}
         ></PrintPkmn>
-        
+
         <PrintPkmn
           name={evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name}
           urlimg={Evo3.urlimg}
