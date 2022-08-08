@@ -7,17 +7,17 @@ const fetcher = (url) => {
   return fetch(url).then((res) => res.json())
 }
 
-export default function PrintPkmn({ name, urlimg, alt, conditional }) {
+export default function PrintPkmn({ name, urlimg }) {
 
   return (
     <>      
-        {conditional && (
+        {name && (
           <div className={styles.pkmnevo}>
             <h2>{name}</h2>
             <div className={styles.pkmnimg}>
               <Image
                 src={urlimg}
-                alt={alt}
+                alt={name}
                 layout={"fill"}
               ></Image>
             </div>

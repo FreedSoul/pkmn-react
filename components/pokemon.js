@@ -2,6 +2,7 @@ import useSWR from "swr"
 import Image from "next/image"
 import styles from "../styles/Home.module.css"
 import PrintPkmn from "./PrintPkmn"
+import Evolutions from "./Evolutions"
 
 const fetcher = (url) => {
   // console.log(url)
@@ -31,36 +32,18 @@ export default function Pokemon({ name, url }) {
       revalidateOnFocus: false,
     }
   )
-    
-  // console.log(evolution)
-  // console.log(evolution["chain"]["evolves_to"][0].species.name, 'evo name')
-  const { ftEvoUrl, ftEvoUrlError } = useSWR(
-    true ? `${url}${evolution?.chain.evolves_to[0]?.species.name}` : null,
-    fetcher,
-    {
-      revalidateOnFocus: false,
-    }
+  const pkmnevoname =
+    evolution?.chain.evolves_to[0]?.species.name
+  const Evo2 = Evolutions(pkmnevoname, url, evolution)
+  const Evo3 = Evolutions(
+    evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name,
+    url,
+    evolution
   )
-  console.log(
-    evolution ? `${url}${evolution?.chain.evolves_to[0]?.species.name}` : null
-  )
-  // console.log({ftEvoUrlError})
-  const { ftEvoUrl2, ftEvoUrl2Error } = useSWR(
-    () => evolution
-      ? `${url}${evolution.chain.evolves_to[0]?.evolves_to[0]?.species.name}`
-      : null,
-    fetcher,
-    {
-      revalidateOnFocus: false,
-    }
-  )
-    // console.log(evolution?.chain?.evolves_to[0]?.evolves_to[0]?.species.name)
-  const { ftEvoUrl3, ftEvoUrl3Error } = useSWR(
-    () => evolution ? `${url}${evolution.chain.species.name}` : null,
-    fetcher,
-    {
-      revalidateOnFocus: false,
-    }
+  const Evo = Evolutions(
+    evolution?.chain.species.name,
+    url,
+    evolution
   )
 
   if(pkmnError){
@@ -81,109 +64,31 @@ export default function Pokemon({ name, url }) {
   if (!evolution) {
     return <div>evolution cargando...</div>
   }
-  if (ftEvoUrlError) {
-    return <div>no evolution here</div>
-  }
-  if (!ftEvoUrl) {
-    return <div>evolution url cargando...</div>
-  }
-  if (ftEvoUrl2Error) {
-    return <div>no evolution2</div>
-  }
-  if (!ftEvoUrl2) {
-    return <div>evolution2 url cargando...</div>
-  }
-  if (ftEvoUrl3Error) {
-    return <div>no evolution3</div>
-  }
-  if (!ftEvoUrl3) {
-    return <div>evolution3 url cargando...</div>
-  }
-  // if (!ftEvoImg) {
-  //   return <div>evolution img cargando...</div>
-  // }
-  // if (error) return <h1>ohhh snapp!</h1>
-  // console.log(pkmn.species.url, "este es pkmn")
-  // console.log(species["evolution_chain"]["url"], "este es species")
-  // console.log(evolution.chain.evolves_to, "este es evolution")
+  // console.log(Evo3)
+  // console.log(evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name)
 
   return (
-    <div>
+    <div className={styles['fetched-container']}>
+      {/* serached pkmn */}
       <PrintPkmn
         name={pkmn.name}
-        conditional={true}
         urlimg={pkmn.sprites.front_default}
-        alt={pkmn.name}
       ></PrintPkmn>
-      {/* //   <h2>{pkmn.name}</h2>
-      <h2>{pkmn.id}</h2>
-      <div className={styles.pkmnimg}>
-        <Image
-          src={pkmn.sprites.front_default}
-          alt={pkmn.name}
-          layout={"fill"}
-        ></Image>
-       </div> */}
       <div className={styles.evolutions}>
         <PrintPkmn
           name={evolution?.chain.species.name}
-          conditional={evolution}
-          urlimg={ftEvoUrl3.sprites.front_default}
-          alt={evolution?.chain.species.name}
+          urlimg={Evo.urlimg}
         ></PrintPkmn>
-        {/* {evolution && (
-          <div className={styles.pkmnevo}>
-            <p>{evolution?.chain.species.name}</p>
-            <div className={styles.pkmnimg}>
-              <Image
-                src={ftEvoUrl3.sprites.front_default}
-                alt={evolution.name}
-                layout={"fill"}
-              ></Image>
-            </div>
-          </div>
-        )} */}
 
         <PrintPkmn
           name={evolution?.chain.evolves_to[0]?.species.name}
-          conditional={evolution.chain.evolves_to[0]?.species.name}
-          urlimg={ftEvoUrl.sprites.front_default}
-          alt={evolution?.chain.evolves_to[0]?.species.name}
+          urlimg={Evo2.urlimg}
         ></PrintPkmn>
-        {/* {evolution.chain.evolves_to[0]?.species.name && (
-          <div className={styles.pkmnevo}>
-            <p>{"=>" + evolution?.chain.evolves_to[0].species.name}</p>
-            <div className={styles.pkmnimg}>
-              <Image
-                src={ftEvoUrl.sprites.front_default}
-                alt={evolution.name}
-                layout={"fill"}
-              ></Image>
-            </div>
-          </div>
-        )} */}
+        
         <PrintPkmn
           name={evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name}
-          conditional={
-            evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name
-          }
-          urlimg={ftEvoUrl2.sprites.front_default}
-          alt={evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name}
+          urlimg={Evo3.urlimg}
         ></PrintPkmn>
-        {/* {evolution.chain.evolves_to[0]?.evolves_to[0]?.species.name && (
-          <div className={styles.pkmnevo}>
-            <p>
-              {"=>" + evolution?.chain.evolves_to[0].evolves_to[0].species.name}
-            </p>
-            <div className={styles.pkmnimg}>
-              <Image
-                src={ftEvoUrl2.sprites.front_default}
-                alt={evolution.name}
-                layout={"fill"}
-              ></Image>
-            </div>
-          </div>
-        )} */}
       </div>
     </div>
   )
