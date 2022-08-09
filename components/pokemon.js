@@ -43,7 +43,7 @@ export default function Pokemon({ name, url }) {
     evolution
   )
   const Evo = Evolutions(evolution?.chain.species.name, url, evolution)
-
+  
   if (pkmnError) {
     return <div>no pokemon</div>
   }
