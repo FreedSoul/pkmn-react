@@ -17,3 +17,4 @@ in a much more concise way avoiding interesting, but not relevant info to play
 ## reminder
 
 - remember when passing functions as props to child just send the reference like [theprop={handlerX}] or to send arguments use [theprop={()=>handlerX(...args)}]never use [theprop={handlerX()}] <-- this make the function to inmediately being executed in every rerender
+- how do you pass data from the child to parent?, using callbacks

@@ -13,7 +13,7 @@ export default function Home() {
 
   const handleSubmit = (event) =>{
     event.preventDefault()
-    hola.current.value = ''
+    // hola.current.value = ''
   }
 
   return (
@@ -35,10 +35,8 @@ export default function Home() {
           debounceTimeout={500}
           minLength={2}
         />
-        <button>enviar</button>
       </form>
       <Pokemon name={pkname !== "" ? pkname : "bulbasaur"} url={url} />
-      {/* <Evolution id={21}/> */}
     </div>
   )
 }
