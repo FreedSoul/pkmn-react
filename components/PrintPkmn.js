@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { Children } from "react"
 // import styles from "../styles/PrintPkmn.module.css"
 import styles from "../styles/PrintPkmn.module.css"
 import PrintDetails from "./PrintDetails"

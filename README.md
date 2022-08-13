@@ -3,6 +3,12 @@
 I created the app to search, interesting and valuable info about pokemons to play pkmn games,
 in a much more concise way avoiding interesting, but not relevant info to play
 
+## the app have 3 sections
+
+- find pkmn and evolutions
+- compare pkmns
+- whats that pokemon
+
 ## [Credits to evan liaw for the background images](https://evanliaw.com/)
 
 ## Challenges
@@ -12,7 +18,7 @@ in a much more concise way avoiding interesting, but not relevant info to play
 - day 3: i couldnt make work the conditional fetching, then i resolved it using a checking if, for every named data [pkmn,species,evolution] [this post helps](https://stackoverflow.com/questions/60375246/cant-access-to-my-data-from-a-swr-fetch-react)
 - day 4: i realized that until [evolution] was ok, but fetching secuencially wll not work because not all pkmns have 3 evolutions, onwards i had to use a parallel fetching with the evolutions component
 - day 5: pressing a key in the pokemon input, was triggering a fetch for every key i press, resolved using [debounce function](https://blog.logrocket.com/how-and-when-to-debounce-or-throttle-in-react/), and i found that calling a swr hook again after the line 52 throw and error in pokemon.js, seems that is neccesary to call all the swr fetch hooks before the ifs that check error or no data yet
-- day 6:
+- day 6 and 7: trying to apply functional programming extracting the json data provided by POKE API, using map and filter in conjunction have a good fit (never forget writting right the syntax of map and filter functs)
 
 ## reminder
 
