@@ -2,11 +2,10 @@ import styles from "../styles/Home.module.css"
 import useSWR from "swr"
 import { useState,useEffect } from "react"
 import PrintPkmn from "../components/PrintPkmn"
-import FetchPkdxData from "../components/Evolutions"
+import FetchPkdxData from "../components/FetchPkdxData"
 import { DebounceInput } from "react-debounce-input"
 
 export default function WhatPkmn() {
-  //---------------------arreglar EVOLUTIONS>JS =>  FetchPkdxData
   const [whatpkmn, setwhatpkmn] = useState("")
   // const [pkmnInfo, setPkmnInfo] = useState({})
   const [answer, setAnswer] = useState("")
@@ -39,9 +38,7 @@ export default function WhatPkmn() {
       <div className={styles.areapokemon}>
         <PrintPkmn
           name={pkmnId}
-          urlimg={
-            pkmnInfo.pkdx?.sprites?.front_default
-          }
+          urlimg={url}
         ></PrintPkmn>
       </div>
       {whatpkmn === answer &&

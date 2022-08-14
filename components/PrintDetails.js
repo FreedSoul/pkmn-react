@@ -1,5 +1,4 @@
 import Image from "next/image"
-// import styles from "../styles/PrintPkmn.module.css"
 import styles from "../styles/PrintDetails.module.css"
 import useSWR from "swr"
 import { fetcher } from "./pokemon"

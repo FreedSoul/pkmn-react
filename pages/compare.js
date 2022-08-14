@@ -3,6 +3,7 @@ import { useState, useRef } from "react"
 import PrintPkmn from "../components/PrintPkmn"
 import PrintDetails from "../components/PrintDetails"
 import { DebounceInput } from "react-debounce-input"
+import FetchPkdxData from "../components/FetchPkdxData"
 
 export default function Compare() {
   const [compare1, setCompare1] = useState("")
@@ -11,7 +12,6 @@ export default function Compare() {
 
   const url = `https://pokeapi.co/api/v2/pokemon/`
   // const hola = useRef()
-
   const handleSubmit = (event) => {
     event.preventDefault()
     // hola.current.value = ''
@@ -30,7 +30,7 @@ export default function Compare() {
           minLength={2}
         />
       </form>
-      <PrintPkmn name={compare1} urlimg={""}>
+      <PrintPkmn name={compare1} urlimg={url}>
         <PrintDetails name={compare1} url={url} />
       </PrintPkmn>
       {/* ---------------------------------------------------- */}
@@ -44,7 +44,7 @@ export default function Compare() {
           minLength={2}
           />
       </form>
-      <PrintPkmn name={compare2} urlimg={""}>
+      <PrintPkmn name={compare2} urlimg={url}>
         <PrintDetails name={compare2} url={url} />
       </PrintPkmn>
       {/* ---------------------------------------------------- */}
@@ -58,7 +58,7 @@ export default function Compare() {
           minLength={2}
         />
       </form>
-      <PrintPkmn name={compare3} urlimg={""}>
+      <PrintPkmn name={compare3} urlimg={url}>
         <PrintDetails name={compare3} url={url} />
       </PrintPkmn>
     </div>

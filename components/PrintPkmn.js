@@ -1,22 +1,24 @@
 import Image from "next/image"
-// import styles from "../styles/PrintPkmn.module.css"
 import styles from "../styles/PrintPkmn.module.css"
-import PrintDetails from "./PrintDetails"
+import FetchPkdxData from "./FetchPkdxData"
 
-// const fetcher = (url) => {
-   // console.log(url)
-//   return fetch(url).then((res) => res.json())
-// }
 
 export default function PrintPkmn({ name, urlimg, children }) {
-
+  const pkmn = FetchPkdxData(name,urlimg,name)
   return (
     <>
       {name && (
         <div className={styles.pkmnevo}>
           <h2>{name}</h2>
           <div className={styles.pkmnimg}>
-            <Image src={urlimg} alt={name} layout={"fill"}></Image>
+            <Image
+              src={
+                pkmn.pkdx?.sprites?.front_default ??
+                "/pokedex-icon.png"
+              }
+              alt={name}
+              layout={"fill"}
+            ></Image>
           </div>
           {children}
         </div>

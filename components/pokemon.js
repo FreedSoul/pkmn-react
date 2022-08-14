@@ -2,7 +2,7 @@ import useSWR from "swr"
 import Image from "next/image"
 import styles from "../styles/Home.module.css"
 import PrintPkmn from "./PrintPkmn"
-import FetchPkdxData from "./Evolutions"
+import FetchPkdxData from "./FetchPkdxData"
 import PrintDetails from "./PrintDetails"
 
 export const fetcher = (url) => {
@@ -66,18 +66,18 @@ export default function Pokemon({ name, url }) {
       {/* serached pkmn */}
       <PrintPkmn
         name={pkmn.name}
-        urlimg={pkmn.sprites.front_default}
+        urlimg={url}
       ></PrintPkmn>
       <div className={styles["evolutions"]}>
-        <PrintPkmn name={EvoName} urlimg={Evo.pkdx?.sprites.front_default}>
+        <PrintPkmn name={EvoName} urlimg={url}>
           <PrintDetails name={EvoName} url={url} />
         </PrintPkmn>
 
-        <PrintPkmn name={EvoName2} urlimg={Evo2.pkdx?.sprites.front_default}>
+        <PrintPkmn name={EvoName2} urlimg={url}>
           <PrintDetails name={EvoName2} url={url} />
         </PrintPkmn>
 
-        <PrintPkmn name={EvoName3} urlimg={Evo3.pkdx?.sprites.front_default}>
+        <PrintPkmn name={EvoName3} urlimg={url}>
           <PrintDetails name={EvoName3} url={url} />
         </PrintPkmn>
       </div>

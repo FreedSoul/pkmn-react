@@ -6,8 +6,10 @@ const fetcher = (url) => {
 }
 
 export default function FetchPkdxData(name, url, condition) {
-  const { data, error } = useSWR(condition?`${url}${name}`:null, fetcher)
-  console.log({data})
+  const { data, error } = useSWR(condition ? `${url}${name}` : null, fetcher, {
+    revalidateOnFocus: false,
+  })
+  // console.log({data})
 
   return {
     pkdx: data,
