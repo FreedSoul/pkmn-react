@@ -1,18 +1,16 @@
 import useSWR from "swr"
-import Image from "next/image"
-import styles from "../styles/Home.module.css"
-import PrintPkmn from "./PrintPkmn"
 
 const fetcher = (url) => {
   console.log(url)
   return fetch(url).then((res) => res.json())
 }
 
-export default function Evolutions(name, url, condition) {
+export default function FetchPkdxData(name, url, condition) {
   const { data, error } = useSWR(condition?`${url}${name}`:null, fetcher)
+  console.log({data})
 
   return {
-    urlimg: data?.sprites.front_default,
+    pkdx: data,
     isLoading: !error && !data,
     isError: error,
   }

@@ -2,7 +2,7 @@ import useSWR from "swr"
 import Image from "next/image"
 import styles from "../styles/Home.module.css"
 import PrintPkmn from "./PrintPkmn"
-import Evolutions from "./Evolutions"
+import FetchPkdxData from "./Evolutions"
 import PrintDetails from "./PrintDetails"
 
 export const fetcher = (url) => {
@@ -36,9 +36,9 @@ export default function Pokemon({ name, url }) {
   const EvoName = evolution?.chain.species.name
   const EvoName2 = evolution?.chain.evolves_to[0]?.species.name
   const EvoName3 = evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name
-  const Evo2 = Evolutions(EvoName2, url, evolution)
-  const Evo3 = Evolutions(EvoName3, url, evolution)
-  const Evo = Evolutions(EvoName, url, evolution)
+  const Evo2 = FetchPkdxData(EvoName2, url, evolution)
+  const Evo3 = FetchPkdxData(EvoName3, url, evolution)
+  const Evo = FetchPkdxData(EvoName, url, evolution)
 
   if (pkmnError) {
     return <div>no pokemon</div>
@@ -69,15 +69,15 @@ export default function Pokemon({ name, url }) {
         urlimg={pkmn.sprites.front_default}
       ></PrintPkmn>
       <div className={styles["evolutions"]}>
-        <PrintPkmn name={EvoName} urlimg={Evo.urlimg}>
+        <PrintPkmn name={EvoName} urlimg={Evo.pkdx?.sprites.front_default}>
           <PrintDetails name={EvoName} url={url} />
         </PrintPkmn>
 
-        <PrintPkmn name={EvoName2} urlimg={Evo2.urlimg}>
+        <PrintPkmn name={EvoName2} urlimg={Evo2.pkdx?.sprites.front_default}>
           <PrintDetails name={EvoName2} url={url} />
         </PrintPkmn>
 
-        <PrintPkmn name={EvoName3} urlimg={Evo3.urlimg}>
+        <PrintPkmn name={EvoName3} urlimg={Evo3.pkdx?.sprites.front_default}>
           <PrintDetails name={EvoName3} url={url} />
         </PrintPkmn>
       </div>
