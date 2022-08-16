@@ -84,7 +84,7 @@ export default function PrintDetails({ name, url }) {
   console.log("-----------")
   return (
     <>
-      {
+      {details&&
         <div className={styles.details}>
           <div className={styles.types}>
             <h3>types</h3>

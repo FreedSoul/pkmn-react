@@ -12,7 +12,13 @@ const colors = {
   },
 }
 
-const theme = extendTheme({ colors })
+const theme = extendTheme({
+  colors,
+  // fonts: {
+  //   heading: `'Open Sans', sans-serif`,
+  //   body: `'Raleway', sans-serif`,
+  // },
+})
 
 function MyApp({ Component, pageProps }) {
   return (

@@ -4,6 +4,7 @@ import PrintPkmn from "../components/PrintPkmn"
 import PrintDetails from "../components/PrintDetails"
 import { DebounceInput } from "react-debounce-input"
 import FetchPkdxData from "../components/FetchPkdxData"
+import Link from "next/link"
 
 export default function Compare() {
   const [compare1, setCompare1] = useState("")
@@ -19,6 +20,12 @@ export default function Compare() {
 
   return (
     <div className={styles.container}>
+      <Link href="/whatpkmn">
+        <a>what&lsquo;s that pokemon?</a>
+      </Link>
+      <Link href="/">
+        <a>The pokedex</a>
+      </Link>
       <h1>lets compare some pokemons!</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <DebounceInput
@@ -42,7 +49,7 @@ export default function Compare() {
           name="pkname"
           debounceTimeout={500}
           minLength={2}
-          />
+        />
       </form>
       <PrintPkmn name={compare2} urlimg={url}>
         <PrintDetails name={compare2} url={url} />

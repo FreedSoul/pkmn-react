@@ -4,6 +4,7 @@ import { useState,useEffect } from "react"
 import PrintPkmn from "../components/PrintPkmn"
 import FetchPkdxData from "../components/FetchPkdxData"
 import { DebounceInput } from "react-debounce-input"
+import Link from "next/link"
 
 export default function WhatPkmn() {
   const [whatpkmn, setwhatpkmn] = useState("")
@@ -12,11 +13,11 @@ export default function WhatPkmn() {
   const [pkmnId, setPkmnId] = useState(0)
   const url = `https://pokeapi.co/api/v2/pokemon/`
   const totalpkmns = 905
-
   const pkmnInfo = FetchPkdxData(pkmnId,url,pkmnId)
+  const getARandomId = () => Math.floor(Math.random() * totalpkmns)
 
   useEffect(() => {
-    setPkmnId(Math.floor(Math.random() * totalpkmns))
+    setPkmnId(getARandomId)
   }, [])
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function WhatPkmn() {
 
   const handleRefresh = () => {
     setwhatpkmn(pkmnInfo?.pkdx?.name),
-    setPkmnId(Math.floor(Math.random() * totalpkmns))
+    setPkmnId(getARandomId)
   }
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -34,12 +35,15 @@ export default function WhatPkmn() {
   }
   return (
     <div className={styles.container}>
+      <Link href="/">
+        <a>The pokedex</a>
+      </Link>
+      <Link href="/compare">
+        <a>let&lsquo;s compare pokemons!</a>
+      </Link>
       <h1>What&lsquo;s That Pokemon?</h1>
       <div className={styles.areapokemon}>
-        <PrintPkmn
-          name={pkmnId}
-          urlimg={url}
-        ></PrintPkmn>
+        <PrintPkmn name={pkmnId} urlimg={url}></PrintPkmn>
       </div>
       {whatpkmn === answer &&
         "you guessed it (destapar el pokemon tambn despues de tener el filtro)"}
@@ -53,11 +57,7 @@ export default function WhatPkmn() {
           minLength={2}
         />
       </form>
-      <button
-        onClick={handleRefresh}
-      >
-        recargar pokemon
-      </button>
+      <button onClick={handleRefresh}>recargar pokemon</button>
     </div>
   )
 }

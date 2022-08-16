@@ -7,7 +7,7 @@ in a much more concise way avoiding interesting, but not relevant info to play
 
 - find pkmn and evolutions
 - compare pkmns
-- whats that pokemon
+- whats that pokemon?
 
 ## [Credits to evan liaw for the background images](https://evanliaw.com/)
 
@@ -19,8 +19,10 @@ in a much more concise way avoiding interesting, but not relevant info to play
 - day 4: i realized that until [evolution] was ok, but fetching secuencially wll not work because not all pkmns have 3 evolutions, onwards i had to use a parallel fetching with the evolutions component
 - day 5: pressing a key in the pokemon input, was triggering a fetch for every key i press, resolved using [debounce function](https://blog.logrocket.com/how-and-when-to-debounce-or-throttle-in-react/), and i found that calling a swr hook again after the line 52 throw and error in pokemon.js, seems that is neccesary to call all the swr fetch hooks before the ifs that check error or no data yet
 - day 6 and 7: trying to apply functional programming extracting the json data provided by POKE API, using map and filter in conjunction have a good fit (never forget writting right the syntax of map and filter functs)
+- day 8: trying to updating the initial state of the whatpkmn variable in whatpkmn page, i have to use 2 useEffect because math.random get a rerender loop if use with other states updates 
 
 ## reminder
 
 - remember when passing functions as props to child just send the reference like [theprop={handlerX}] or to send arguments use [theprop={()=>handlerX(...args)}]never use [theprop={handlerX()}] <-- this make the function to inmediately being executed in every rerender
 - how do you pass data from the child to parent?, using callbacks
+- icons react-icons, GiCompactDisc, GiCrossedSwords, BsArrowRepeat, CgArrowUpR, ImStatsBars, abilites: TbHierarchy2, add pkmn: RiAddCircleLine, GiWeightScale, CgFormatLineHeight, types: BiIntersect - BsIntersect, page compare: MdCompare, page whatpkmn: BsQuestionSquareFill - BsQuestionDiamond - GiDominoMask - FaMask, details: TbListDetails
