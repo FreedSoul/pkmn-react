@@ -4,7 +4,7 @@ import { useState, useRef } from "react"
 import Pokemon from "../components/pokemon"
 import { DebounceInput } from "react-debounce-input"
 import Link from "next/link"
-import { Flex, Heading, Stack, Box, Spacer,Input } from "@chakra-ui/react"
+import { Flex, Heading, Stack, Box, Spacer,Input, VStack,Image } from "@chakra-ui/react"
 
 export default function Home() {
 
@@ -82,15 +82,27 @@ export default function Home() {
           mask="url(#path-1-inside-1_14_129)"
         />
       </svg> */}
-      <Heading>The Pokedex App</Heading>
+      <VStack>
+        <Heading as={"h2"} zIndex={"1"}>
+          The Pokedex App
+        </Heading>
 
-      <form className={styles.form} onSubmit={handleSubmit}>
+        {/* <form className={styles.form} onSubmit={handleSubmit}> */}
         <Input
           as={DebounceInput}
           value={pkname}
           onChange={(event) => setPkname(event.target.value)}
-          variant={'filled'}
-          placeholder='enter a pokemon name...'
+          variant={"filled"}
+          bg="rgba(0,255,148,0.6)"
+          zIndex={"1"}
+          border={"2px"}
+          focusBorderColor="white"
+          BackgroudColor="green.200"
+          position={"relative"}
+          right={"60px"}
+          size="sm"
+          placeholder="enter a pokemon name..."
+          width={200}
           // onSubmit={ref.fieldName.value=""}
           type="text"
           name="pkname"
@@ -98,7 +110,17 @@ export default function Home() {
           debounceTimeout={500}
           minLength={2}
         />
-        {/* <DebounceInput
+        <Image
+          width={"400px"}
+          height={"150px"}
+          position={"absolute"}
+          top="45px"
+          src={"/fut-frame.svg"}
+          alt={"frame"}
+          // layout={"fill"}
+        ></Image>
+      </VStack>
+      {/* <DebounceInput
           value={pkname}
           onChange={(event) => setPkname(event.target.value)}
           // onSubmit={ref.fieldName.value=""}
@@ -108,7 +130,7 @@ export default function Home() {
           debounceTimeout={10000}
           minLength={2}
         /> */}
-      </form>
+      {/* </form> */}
       <Pokemon name={pkname !== "" ? pkname : "bulbasaur"} url={url} />
     </div>
   )

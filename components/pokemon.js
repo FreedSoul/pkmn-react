@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css"
 import PrintPkmn from "./PrintPkmn"
 import FetchPkdxData from "./FetchPkdxData"
 import PrintDetails from "./PrintDetails"
+import { Center, Flex } from "@chakra-ui/react"
 
 export const fetcher = (url) => {
   // console.log(url)
@@ -62,13 +63,14 @@ export default function Pokemon({ name, url }) {
   // console.log(evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name)
 
   return (
-    <div className={styles["searched"]}>
-      {/* serached pkmn */}
-      <PrintPkmn
-        name={pkmn.name}
-        urlimg={url}
-      ></PrintPkmn>
-      <div className={styles["evolutions"]}>
+    <>
+      <Center>
+        {/* serached pkmn */}
+        <PrintPkmn name={pkmn.name} urlimg={url}>
+          <PrintDetails name={pkmn.name} url={url} />
+        </PrintPkmn>
+      </Center>
+      {/* <Flex justifyContent={"space-between"} alignItems={"baseline"}>
         <PrintPkmn name={EvoName} urlimg={url}>
           <PrintDetails name={EvoName} url={url} />
         </PrintPkmn>
@@ -80,7 +82,7 @@ export default function Pokemon({ name, url }) {
         <PrintPkmn name={EvoName3} urlimg={url}>
           <PrintDetails name={EvoName3} url={url} />
         </PrintPkmn>
-      </div>
-    </div>
+      </Flex> */}
+    </>
   )
 }

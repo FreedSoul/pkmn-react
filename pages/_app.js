@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import Head from "next/head"
 import { ChakraProvider } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react"
+import "@fontsource/audiowide"
 
 const colors = {
   brand: {
@@ -14,10 +15,10 @@ const colors = {
 
 const theme = extendTheme({
   colors,
-  // fonts: {
-  //   heading: `'Open Sans', sans-serif`,
-  //   body: `'Raleway', sans-serif`,
-  // },
+  fonts: {
+    heading: `'audiowide', roboto`,
+    body: `'audiowide', roboto`,
+  },
 })
 
 function MyApp({ Component, pageProps }) {

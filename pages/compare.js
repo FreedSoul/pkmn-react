@@ -5,6 +5,7 @@ import PrintDetails from "../components/PrintDetails"
 import { DebounceInput } from "react-debounce-input"
 import FetchPkdxData from "../components/FetchPkdxData"
 import Link from "next/link"
+import { RiAddCircleLine } from "react-icons/ri"
 
 export default function Compare() {
   const [compare1, setCompare1] = useState("")
@@ -27,35 +28,37 @@ export default function Compare() {
         <a>The pokedex</a>
       </Link>
       <h1>lets compare some pokemons!</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <DebounceInput
-          value={compare1}
-          onChange={(event) => setCompare1(event.target.value)}
-          type="text"
-          name="pkname"
-          debounceTimeout={500}
-          minLength={2}
-        />
-      </form>
+
+      <DebounceInput
+        value={compare1}
+        onChange={(event) => setCompare1(event.target.value)}
+        type="text"
+        name="pkname"
+        debounceTimeout={500}
+        minLength={2}
+      />
+      <RiAddCircleLine w={6} h={6} />
+
       <PrintPkmn name={compare1} urlimg={url}>
         <PrintDetails name={compare1} url={url} />
       </PrintPkmn>
       {/* ---------------------------------------------------- */}
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <DebounceInput
-          value={compare2}
-          onChange={(event) => setCompare2(event.target.value)}
-          type="text"
-          name="pkname"
-          debounceTimeout={500}
-          minLength={2}
-        />
-      </form>
+
+      <DebounceInput
+        value={compare2}
+        onChange={(event) => setCompare2(event.target.value)}
+        type="text"
+        name="pkname"
+        debounceTimeout={500}
+        minLength={2}
+      />
+      <RiAddCircleLine w={6} h={6} />
+
       <PrintPkmn name={compare2} urlimg={url}>
         <PrintDetails name={compare2} url={url} />
       </PrintPkmn>
       {/* ---------------------------------------------------- */}
-      <form className={styles.form} onSubmit={handleSubmit}>
+      
         <DebounceInput
           value={compare3}
           onChange={(event) => setCompare3(event.target.value)}
@@ -64,7 +67,8 @@ export default function Compare() {
           debounceTimeout={500}
           minLength={2}
         />
-      </form>
+        <RiAddCircleLine w={6} h={6} />
+      
       <PrintPkmn name={compare3} urlimg={url}>
         <PrintDetails name={compare3} url={url} />
       </PrintPkmn>
