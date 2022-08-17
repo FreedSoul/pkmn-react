@@ -97,7 +97,7 @@ export default function Home() {
           zIndex={"1"}
           border={"2px"}
           focusBorderColor="white"
-          BackgroudColor="green.200"
+          // BackgroudColor="green.200"
           position={"relative"}
           right={"60px"}
           size="sm"
