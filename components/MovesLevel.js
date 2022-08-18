@@ -32,7 +32,15 @@ export default function MovesLevel({ details }) {
     .map((y) => y.flat())
     .sort((a, b) => a[1] - b[1])
     .map((q, index) => (
-      <li key={index}>{q[0] + "- - " + ((q[1] && q[2]) ?? q[1])}</li>
+      <Box fontSize={'sm'} key={index}>
+          <HStack>
+            <Box>{q[0]}</Box>
+            <Spacer />
+            <Box>
+              {(q[1] && q[2]) ?? q[1]}
+            </Box> 
+          </HStack>
+      </Box>
     ))
 
 
@@ -40,10 +48,10 @@ export default function MovesLevel({ details }) {
     <>
       <Container
         bg={"rgba(0,255,148,0.6)"}
-        position={"relative"}
-        top={"-500px"}
+        position={"absolute"}
+        top={"-40px"}
         left={"250px"}
-        h="300px"
+        h="fit-content"
         maxW={"390px"}
         border={"2px"}
         borderRadius="8.3"

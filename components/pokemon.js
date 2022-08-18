@@ -4,14 +4,15 @@ import styles from "../styles/Home.module.css"
 import PrintPkmn from "./PrintPkmn"
 import FetchPkdxData from "./FetchPkdxData"
 import PrintDetails from "./PrintDetails"
-import { Center, Flex } from "@chakra-ui/react"
+import { Box, Center, Flex, Spacer } from "@chakra-ui/react"
+import PrintEvo from "./PrintEvo"
 
 export const fetcher = (url) => {
   // console.log(url)
   return fetch(url).then((res) => res.json())
 }
 
-export default function Pokemon({ name, url }) {
+export default function Pokemon({ name, url, newSearch }) {
   //! day 2
   //? struggling with objects passed as props,func argument is obj name,
   //? prop in the call of component is the key inside object, to avoid this, use destructuring func({props})
@@ -70,19 +71,35 @@ export default function Pokemon({ name, url }) {
           <PrintDetails name={pkmn.name} url={url} />
         </PrintPkmn>
       </Center>
-      {/* <Flex justifyContent={"space-between"} alignItems={"baseline"}>
-        <PrintPkmn name={EvoName} urlimg={url}>
-          <PrintDetails name={EvoName} url={url} />
-        </PrintPkmn>
-
+      <Flex
+        direction={["column", "column", "row", "row"]}
+        justifyContent={"space-around"}
+        alignItems={"baseline"}
+      >
+        {/* <PrintPkmn name={EvoName} urlimg={url}>
+          <PrintDetails name={EvoName} url={url} /> 
+        </PrintPkmn> */}
+        
+          {/* <Box> */}
+          <PrintEvo name={EvoName} urlimg={url} newSearch={newSearch} />
+          {/* </Box>
+          <Spacer /> */}
+          {EvoName2 && (
+            <PrintEvo name={EvoName2} urlimg={url} newSearch={newSearch} />
+          )}
+          {EvoName3 && (
+            <PrintEvo name={EvoName3} urlimg={url} newSearch={newSearch} />
+          )}
+        
+        {/* 
         <PrintPkmn name={EvoName2} urlimg={url}>
           <PrintDetails name={EvoName2} url={url} />
         </PrintPkmn>
 
         <PrintPkmn name={EvoName3} urlimg={url}>
           <PrintDetails name={EvoName3} url={url} />
-        </PrintPkmn>
-      </Flex> */}
+        </PrintPkmn> */}
+      </Flex>
     </>
   )
 }

@@ -7,20 +7,20 @@ export default function MiscInfo({ details }) {
 
   const stats = details?.stats.map((statItem, index) => {
     return (
-      <li key={index}>
+      <Box key={index} padding={"6px"}>
         <HStack>
-          <Box padding={"3px"}>{statItem.stat.name}</Box>
+          <Box>{statItem.stat.name}</Box>
           <Spacer />
           <Box>{statItem.base_stat}</Box>
         </HStack>
         <Box>
           <Progress
             colorScheme="blue"
-            size="sm"
+            size="md"
             value={parseInt(statItem.base_stat)}
           />
         </Box>
-      </li>
+      </Box>
     )
   })
 
@@ -29,10 +29,10 @@ export default function MiscInfo({ details }) {
       <>
         <Container
           bg={"rgba(0,255,148,0.6)"}
-          position={"relative"}
-          top={"-550px"}
+          position={"absolute"}
+          top={"-40px"}
           left={"250px"}
-          h="300px"
+          h="330px"
           maxW={"390px"}
           border={"2px"}
           borderRadius="8.3"

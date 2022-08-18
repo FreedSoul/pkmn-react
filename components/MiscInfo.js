@@ -1,4 +1,11 @@
-import { Container, Heading } from "@chakra-ui/react"
+import {
+  Box,
+  Center,
+  Container,
+  Heading,
+  ListItem,
+  Text,
+} from "@chakra-ui/react"
 
 export default function MiscInfo({ details }) {
   // const details = FetchDetails(name, url).details
@@ -6,16 +13,37 @@ export default function MiscInfo({ details }) {
   const types = details?.types
     .map((H) => H.type.name)
     .map((W, index) => {
-      return <li key={index}>{W}</li>
+      return (
+        <Box
+          padding={1}
+          bg={"green"}
+          borderTopRightRadius={"16"}
+          borderBottomLeftRadius={'16'}
+          key={index}
+        >
+          {W}
+        </Box>
+      )
     })
 
   const abilities = details?.abilities.map((abilityItem, index) => {
-    return <li key={index}>{abilityItem.ability.name}</li>
+    return (
+      <Box
+        m='0.5'
+        padding={'1'}
+        bg={"green"}
+        borderTopRightRadius={"16"}
+        borderBottomLeftRadius={"16"}
+        key={index}
+      >
+        {abilityItem.ability.name}
+      </Box>
+    )
   })
 
   const weight = details?.weight / 10 + " Kg"
 
-  const height = details?.height / 10 + " Mt"
+  const height = details?.height / 10 + " Mts"
 
   const baseExp = details?.base_experience
 
@@ -23,10 +51,10 @@ export default function MiscInfo({ details }) {
     <>
       <Container
         bg={"rgba(0,255,148,0.6)"}
-        position={"relative"}
-        top={"-250px"}
-        right={"250px"}
-        h="300px"
+        position={"absolute"}
+        top={"-40px"}
+        left={"250px"}
+        h="fit-content"
         border={"2px"}
         borderRadius="8.3"
       >
@@ -36,30 +64,38 @@ export default function MiscInfo({ details }) {
         <Heading as={"h3"} fontSize={"sm"}>
           Types:
         </Heading>
-        <div>{types}</div>
-
+        {/* <div>{types}</div> */}
+        <Center>{types}</Center>
         <Heading as={"h3"} fontSize={"sm"}>
           Abilities:
         </Heading>
-        <div>{abilities}</div>
-
+        {/* <div>{abilities}</div> */}
+        <Center flexDirection={"column"}>{abilities}</Center>
         <Heading as={"h3"} fontSize={"sm"}>
           Weight:
         </Heading>
-        <div>{<li>{weight}</li>}</div>
-
+        {/* <li>{weight}</li> */}
+        <Text textAlign={"center"} padding={1}>
+          {weight}
+        </Text>
         <Heading as={"h3"} fontSize={"sm"}>
           Height:
         </Heading>
         <div>
-          <li>{height}</li>
+          {/* <li>{height}</li> */}
+          <Text textAlign={"center"} padding={1}>
+            {height}
+          </Text>
         </div>
 
         <Heading as={"h3"} fontSize={"sm"}>
           Base Exp:
         </Heading>
         <div>
-          <li>{baseExp}</li>
+          {/* <li>{baseExp}</li> */}
+          <Text textAlign={"center"} padding={1}>
+            {baseExp}
+          </Text>
         </div>
       </Container>
     </>

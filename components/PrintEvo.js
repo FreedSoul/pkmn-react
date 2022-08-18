@@ -1,20 +1,30 @@
-import { Box, Button, Center, Container, Flex, Heading, HStack, Image,Text, VStack } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Center,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Image,
+  VStack,
+} from "@chakra-ui/react"
+import Link from "next/link"
 import FetchPkdxData from "./FetchPkdxData"
 
-
-export default function PrintPkmn({ name, urlimg, children }) {
-  const pkmn = FetchPkdxData(name,urlimg,name)
+export default function PrintEvo(props) {
+  const pkmn = FetchPkdxData(props.name, props.urlimg, props.name)
+  const pruebaName = props.name
+  console.log(props.name)
   return (
     <>
-      {name && (
-        // className={styles.pkmnevo}
+      {props.name && (
         <Flex
           direction={"column"}
-          mt="120px"
-          right={'0px'}
-          h={"260px"}
+          mt="160px"
+          h={"180px"}
           w={"250px"}
-          bg="rgba(0,255,148,0.6)"
+          bg="rgba(250,255,0,0.54)"
           border={"2px"}
           borderRadius="8.3"
           position={"relative"}
@@ -26,16 +36,16 @@ export default function PrintPkmn({ name, urlimg, children }) {
             top="-60px"
             // boxSize={"100px"}
             src={"/pokedex-edge-top.svg"}
-            alt={name}
+            alt={props.name}
             // layout={"fill"}
           ></Image>
           <Image
             width={"300px"}
             height={"100px"}
             position={"absolute"}
-            top="210px"
+            top="130px"
             src={"/pokedex-edge-bot.svg"}
-            alt={name}
+            alt={props.name}
             // layout={"fill"}
           ></Image>
           <Center>
@@ -46,21 +56,26 @@ export default function PrintPkmn({ name, urlimg, children }) {
               h="100px"
               mt={10}
             >
-              <Heading as="h3" size={"md"}>
-                {name}
-              </Heading>
+              <Button
+                size={"md"}
+                textDecorationLine={"underline"}
+                color={"blue"}
+                onClick={() => props.newSearch(pruebaName)}
+              >
+                {props.name}
+              </Button>
               {/* className={styles.pkmnimg} */}
               <Box maxW="md" h={"100px"} w={"100px"}>
                 <Image
                   boxSize={"100px"}
                   src={pkmn.pkdx?.sprites?.front_default ?? "/pokedex-icon.png"}
-                  alt={name}
+                  alt={props.name}
                   layout={"fill"}
                 ></Image>
               </Box>
             </Flex>
           </Center>
-          {children}
+          {/* {children} */}
         </Flex>
       )}
     </>

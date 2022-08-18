@@ -36,9 +36,9 @@ export default function movesMachine({ details }) {
     <>
       <Container
         bg={"rgba(0,255,148,0.6)"}
-        position={"relative"}
-        top={"-800px"}
-        right={"250px"}
+        position={"absolute"}
+        top={"-40px"}
+        left={"250px"}
         h="fit-content"
         maxW={"390px"}
         border={"2px"}
@@ -47,11 +47,11 @@ export default function movesMachine({ details }) {
         <Heading as={"h3"} fontSize={"lg"} textAlign="center">
           Moves Machine
         </Heading>
-        <div>
+        <Box fontSize={'xs'}>
           <ul style={{ listStyleType: "none", columns: "2" }}>
             {movesMachine}
           </ul>
-        </div>
+        </Box>
       </Container>
     </>
   )

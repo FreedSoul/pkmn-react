@@ -1,5 +1,5 @@
 .container {
-  grid-column: 3 /8;
+  /* grid-column: 3 /8; */
   /* padding: 0 2rem; */
   /* display: flex; */
   /* flex-direction: column; */
@@ -22,11 +22,11 @@
 .searched{
   /* display: flex; */
   /* flex-direction: column; */
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
-.form{
+/* .form{
   justify-content: center;
 }
 
@@ -60,4 +60,4 @@
   .logo img {
     filter: invert(1);
   }
-}
+} */

@@ -2,11 +2,16 @@ import Image from "next/image"
 import styles from "../styles/PrintDetails.module.css"
 import useSWR from "swr"
 import { fetcher } from "./pokemon"
-import { Box, Center, Container, Heading, HStack, ListItem, Progress, Spacer, Text, UnorderedList, VStack } from "@chakra-ui/react"
+import { Box, Button, Center, Container, Heading, HStack, ListItem, Progress, Spacer, Text, UnorderedList, useBoolean, VStack } from "@chakra-ui/react"
 import MiscInfo from './MiscInfo'
 import ShowStats from './ShowStats'
 import MovesLevel from "./MovesLevel"
 import MovesMachine from "./MovesMachine"
+import { useEffect, useState } from "react"
+import { TbListDetails } from "react-icons/tb"
+import { ImStatsBars } from "react-icons/im"
+import { CgArrowUpR } from "react-icons/cg"
+import { GiCompactDisc } from "react-icons/gi"
 
 function FetchDetails(name, url) {
   const { data, error } = useSWR(name ? `${url}${name}` : null, fetcher)
@@ -19,109 +24,117 @@ function FetchDetails(name, url) {
 }
 
 export default function PrintDetails({ name, url }) {
+  // const [misc, setMisc] = useBoolean()
+  // const [stats, setStats] = useBoolean()
+  // const [level, setLevel] = useBoolean()
+  // const [machine, setMachine] = useBoolean()
+  const [misc, setMisc] = useState(false)
+  const [stats, setStats] = useState(true)
+  const [level, setLevel] = useState(false)
+  const [machine, setMachine] = useState(false)
+  
   const details = FetchDetails(name, url).details
-
-  // const abilities = details?.abilities.map((abilityItem, index) => {
-  //   return (
-  //     <li key={index}>
-  //       {abilityItem.ability.name}
-  //     </li>
-  //   )
-  // })
-
-  // const weight = details?.weight / 10 + " Kg"
-
-  // const height = details?.height / 10 + " Mt"
-
-  // const baseExp = details?.base_experience
-
-  // const types = details?.types
-  //   .map((H) => H.type.name)
-  //   .map((W, index) => {
-  //     return <li key={index}>{W}</li>
-  //   })
-
-  // const stats = details?.stats.map((statItem, index) => {
-  //   return (
-  //       <li key={index}>
-  //         <HStack>
-  //           <Box padding={"3px"}>
-  //             {statItem.stat.name}
-  //           </Box>
-  //           <Spacer />
-  //           <Box>{statItem.base_stat}</Box>
-  //         </HStack>
-  //         <Box>
-  //           <Progress
-  //             colorScheme="blue"
-  //             size="sm"
-  //             value={parseInt(statItem.base_stat)}
-  //           />
-  //         </Box>
-  //       </li>
-  //   )
-  // })
-
-  // const movesLevel = details?.moves
-  //   .map((moveItem) => {
-  //     return [
-  //       moveItem.move.name,
-  //       moveItem.version_group_details
-  //         .map((item) => {
-  //           if (
-  //             item.version_group.name === "x-y" &&
-  //             item.move_learn_method.name === "level-up"
-  //           ) {
-  //             return item.level_learned_at
-  //           } else {
-  //             return 0
-  //           }
-  //         })
-  //         .filter((u) => u !== 0),
-  //     ]
-  //   })
-  //   .filter((y) => JSON.stringify(y[1]) !== "[]")
-  //   .map((y) => y.flat())
-  //   .sort((a, b) => a[1] - b[1])
-  //   .map((q, index) => (
-  //     <li key={index}>{q[0] + "- - " + ((q[1] && q[2]) ?? q[1])}</li>
-  //   ))
-  // // -----------------------------------------------------------------------------------------
-  // const movesMachine = details?.moves
-  //   .map((moveItem) => {
-  //     return [
-  //       moveItem.move.name,
-  //       moveItem.version_group_details
-  //         .map((item) => {
-  //           if (
-  //             item.version_group.name === "x-y" &&
-  //             item.move_learn_method.name === "machine"
-  //           ) {
-  //             return item
-  //           } else {
-  //             return 0
-  //           }
-  //         })
-  //         .filter((u) => u !== 0),
-  //     ]
-  //   })
-  //   .filter((y) => JSON.stringify(y[1]) !== "[]")
-  //   .map((t) => t[0])
-  //   .map((q, index) => <li key={index}>{q}</li>)
-  // console.log(movesLevel2, name, "level")
 
   return (
     <>
       {details && (
         <div>
-          <MiscInfo details={details}/>
-         
-          <ShowStats details={details}/>
-          
-          <MovesLevel details={details}/>
-          
-          <MovesMachine details={details}/>
-          
+          <HStack justifyContent="space-around" mt={5}>
+            <VStack direction={"column"}>
+              <Button
+                h={"30px"}
+                w="30px"
+                bg={!level ? "white" : "rgba(0,0,0,0.45)"}
+                border={level ? "2px" : ""}
+                borderColor={"green"}
+                _hover={"unset"}
+                boxShadow={!level ? "4px 5px 3px 1px rgba(0,0,0,0.75)" : ""}
+                onClick={() => {
+                  setStats(false)
+                  setLevel(!level)
+                  setMisc(false)
+                  setMachine(false)
+                }}
+              >
+                <Text fontSize="md">
+                  <CgArrowUpR></CgArrowUpR>
+                </Text>
+              </Button>
+              <Text fontSize="xs">Level</Text>
+            </VStack>
+            <VStack direction={"column"}>
+              <Button
+                h={"30px"}
+                w="30px"
+                bg={!machine ? "white" : "rgba(0,0,0,0.45)"}
+                border={machine ? "2px" : ""}
+                borderColor={"green"}
+                _hover={"unset"}
+                boxShadow={!machine ? "4px 5px 3px 1px rgba(0,0,0,0.75)" : ""}
+                onClick={() => {
+                  setStats(false)
+                  setLevel(false)
+                  setMisc(false)
+                  setMachine(!machine)
+                }}
+              >
+                <Text fontSize="md">
+                  <GiCompactDisc></GiCompactDisc>
+                </Text>
+              </Button>
+              <Text fontSize="xs">machine</Text>
+            </VStack>
+            <VStack direction={"column"}>
+              <Button
+                h={"30px"}
+                w="30px"
+                bg={!misc ? "white" : "rgba(0,0,0,0.45)"}
+                border={misc ? "2px" : ""}
+                borderColor={"green"}
+                _hover={"unset"}
+                onClick={() => {
+                  setStats(false)
+                  setLevel(false)
+                  setMisc(!misc)
+                  setMachine(false)
+    
+                }}
+                boxShadow={!misc ? "4px 5px 3px 1px rgba(0,0,0,0.75)" : ""}
+              >
+                <Text fontSize="md">
+                  <TbListDetails fontSize={"xl"}></TbListDetails>
+                </Text>
+              </Button>
+              <Text fontSize="xs">Details</Text>
+            </VStack>
+            <VStack direction={"column"}>
+              <Button
+                h={"30px"}
+                w="30px"
+                bg={!stats ? "white" : "rgba(0,0,0,0.45)"}
+                border={stats ? "2px" : ""}
+                borderColor={"green"}
+                _hover={"unset"}
+                boxShadow={!stats ? "4px 5px 3px 1px rgba(0,0,0,0.75)" : ""}
+                onClick={() => {
+                  setStats(!stats)
+                  setLevel(false)
+                  setMisc(false)
+                  setMachine(false)
+                }}
+              >
+                <Text fontSize="md">
+                  <ImStatsBars></ImStatsBars>
+                </Text>
+              </Button>
+              <Text fontSize="xs">Stats</Text>
+            </VStack>
+          </HStack>
+
+          {misc && <MiscInfo details={details} />}
+          {stats && <ShowStats details={details} />}
+          {level && <MovesLevel details={details} />}
+          {machine && <MovesMachine details={details} />}
         </div>
       )}
     </>
