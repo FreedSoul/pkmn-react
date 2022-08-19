@@ -20,7 +20,7 @@ export default function PrintPkmn({ name, urlimg, children }) {
         // className={styles.pkmnevo}
         <Flex
           direction={"column"}
-          mt={["120px", "130px", "130px"]}
+          mt={["140px", "130px", "130px"]}
           mb={["310px", "0px", "0px"]}
           right={["0vw", "24vw", "10vw"]}
           h={"260px"}

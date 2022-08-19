@@ -45,7 +45,12 @@ export default function Home() {
         </Box>
       </Flex>
       <VStack>
-        <Heading as={"h2"} zIndex={"1"} mt={['10px','0px']} fontSize={['20px','25px','30px']}>
+        <Heading
+          as={"h2"}
+          zIndex={"1"}
+          mt={["30px", "20px"]}
+          fontSize={["20px", "25px", "30px"]}
+        >
           The Pokedex App
         </Heading>
 
@@ -58,16 +63,18 @@ export default function Home() {
           bg="rgba(0,255,148,0.6)"
           zIndex={"1"}
           border={"2px"}
-          borderColor={'black'}
-          focusBorderColor="white"
+          borderColor={"black"}
+          focusBorderColor="black"
+          color={"black"}
+          // backgroundColor={'red'}
           // BackgroudColor="green.200"
           position={"relative"}
-          right={["15vw", '10vw']}
+          right={["0vw","10vw", "10vw", "9vw"]}
           top={"20px"}
-          size={["xs",'md']}
+          size={["xs", "sm", "sm"]}
+          fontSize={["sm", "sm"]}
           placeholder="enter a pokemon name..."
-          width={200}
-          // onSubmit={ref.fieldName.value=""}
+          width={["180px", "230px", "300px"]}
           type="text"
           name="pkname"
           debounceTimeout={500}
@@ -77,11 +84,13 @@ export default function Home() {
           width={"100%"}
           height={"150px"}
           position={"absolute"}
-          top="45px"
+          top="60px"
           src={"/fut-frame.svg"}
           alt={"frame"}
           // layout={"fill"}
         ></Image>
+        
+        
       </VStack>
       {/* <DebounceInput
           value={pkname}
@@ -94,7 +103,11 @@ export default function Home() {
           minLength={2}
         /> */}
       {/* </form> */}
-      <Pokemon name={pkname !== "" ? pkname : "bulbasaur"} url={url} newSearch={handleNewPkmn}/>
+      <Pokemon
+        name={pkname !== "" ? pkname : "bulbasaur"}
+        url={url}
+        newSearch={handleNewPkmn}
+      />
     </div>
   )
 }
