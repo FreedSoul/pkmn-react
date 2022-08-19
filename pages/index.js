@@ -15,7 +15,6 @@ export default function Home() {
 
   const handleNewPkmn = (name) => {
     setPkname(name)
-    // hola.current.value = ''
   }
 
   return (
@@ -46,7 +45,7 @@ export default function Home() {
         </Box>
       </Flex>
       <VStack>
-        <Heading as={"h2"} zIndex={"1"} fontSize={'30'}>
+        <Heading as={"h2"} zIndex={"1"} mt={['10px','0px']} fontSize={['20px','25px','30px']}>
           The Pokedex App
         </Heading>
 
@@ -59,22 +58,23 @@ export default function Home() {
           bg="rgba(0,255,148,0.6)"
           zIndex={"1"}
           border={"2px"}
+          borderColor={'black'}
           focusBorderColor="white"
           // BackgroudColor="green.200"
           position={"relative"}
-          right={"60px"}
-          size="sm"
+          right={["15vw", '10vw']}
+          top={"20px"}
+          size={["xs",'md']}
           placeholder="enter a pokemon name..."
           width={200}
           // onSubmit={ref.fieldName.value=""}
           type="text"
           name="pkname"
-          // ref={hola}
           debounceTimeout={500}
           minLength={2}
         />
         <Image
-          width={"400px"}
+          width={"100%"}
           height={"150px"}
           position={"absolute"}
           top="45px"

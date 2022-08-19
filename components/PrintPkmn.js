@@ -1,17 +1,28 @@
-import { Box, Button, Center, Container, Flex, Heading, HStack, Image,Text, VStack } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Center,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react"
 import FetchPkdxData from "./FetchPkdxData"
 
-
 export default function PrintPkmn({ name, urlimg, children }) {
-  const pkmn = FetchPkdxData(name,urlimg,name)
+  const pkmn = FetchPkdxData(name, urlimg, name)
   return (
     <>
       {name && (
         // className={styles.pkmnevo}
         <Flex
           direction={"column"}
-          mt="120px"
-          right={'0px'}
+          mt={["120px", "130px", "130px"]}
+          mb={["310px", "0px", "0px"]}
+          right={["0vw", "24vw", "10vw"]}
           h={"260px"}
           w={"250px"}
           bg="rgba(0,255,148,0.6)"

@@ -32,7 +32,7 @@ export default function MovesLevel({ details }) {
     .map((y) => y.flat())
     .sort((a, b) => a[1] - b[1])
     .map((q, index) => (
-      <Box fontSize={'sm'} key={index}>
+      <Box fontSize={'xs'} key={index}>
           <HStack>
             <Box>{q[0]}</Box>
             <Spacer />
@@ -48,11 +48,12 @@ export default function MovesLevel({ details }) {
     <>
       <Container
         bg={"rgba(0,255,148,0.6)"}
-        position={"absolute"}
-        top={"-40px"}
-        left={"250px"}
+        // position={"absolute"}
+        // top={"-40px"}
+        // left={"250px"}
+        mt="110"
         h="fit-content"
-        maxW={"390px"}
+        w={"240px"}
         border={"2px"}
         borderRadius="8.3"
       >

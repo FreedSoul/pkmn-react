@@ -2,9 +2,22 @@ import Image from "next/image"
 import styles from "../styles/PrintDetails.module.css"
 import useSWR from "swr"
 import { fetcher } from "./pokemon"
-import { Box, Button, Center, Container, Heading, HStack, ListItem, Progress, Spacer, Text, UnorderedList, useBoolean, VStack } from "@chakra-ui/react"
-import MiscInfo from './MiscInfo'
-import ShowStats from './ShowStats'
+import {
+  Box,
+  Button,
+  Center,
+  Container,
+  Flex,
+  Heading,
+  Hide,
+  HStack,
+  Show,
+  Text,
+  UnorderedList,
+  VStack,
+} from "@chakra-ui/react"
+import MiscInfo from "./MiscInfo"
+import ShowStats from "./ShowStats"
 import MovesLevel from "./MovesLevel"
 import MovesMachine from "./MovesMachine"
 import { useEffect, useState } from "react"
@@ -32,7 +45,7 @@ export default function PrintDetails({ name, url }) {
   const [stats, setStats] = useState(true)
   const [level, setLevel] = useState(false)
   const [machine, setMachine] = useState(false)
-  
+
   const details = FetchDetails(name, url).details
 
   return (
@@ -97,7 +110,6 @@ export default function PrintDetails({ name, url }) {
                   setLevel(false)
                   setMisc(!misc)
                   setMachine(false)
-    
                 }}
                 boxShadow={!misc ? "4px 5px 3px 1px rgba(0,0,0,0.75)" : ""}
               >
@@ -131,10 +143,32 @@ export default function PrintDetails({ name, url }) {
             </VStack>
           </HStack>
 
-          {misc && <MiscInfo details={details} />}
-          {stats && <ShowStats details={details} />}
-          {level && <MovesLevel details={details} />}
-          {machine && <MovesMachine details={details} />}
+          <Hide breakpoint="(max-width: 480px)">
+            <Flex
+              direction={["column", "column", "row", "row"]}
+              position={"relative"}
+              top={"-350px"}
+              left={"250px"}
+            >
+              {misc && <MiscInfo details={details} />}
+              {stats && <ShowStats details={details} />}
+              {level && <MovesLevel details={details} />}
+              {machine && <MovesMachine details={details} />}
+            </Flex>
+          </Hide>
+          <Show breakpoint="(max-width: 480px)">
+            <Flex
+              direction={["column", "column", "row", "row"]}
+              position={"absolute"}
+              top={"200px"}
+              left={"0px"}
+            >
+              {misc && <MiscInfo details={details} />}
+              {stats && <ShowStats details={details} />}
+              {level && <MovesLevel details={details} />}
+              {machine && <MovesMachine details={details} />}
+            </Flex>
+          </Show>
         </div>
       )}
     </>

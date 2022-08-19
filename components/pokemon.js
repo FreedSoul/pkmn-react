@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css"
 import PrintPkmn from "./PrintPkmn"
 import FetchPkdxData from "./FetchPkdxData"
 import PrintDetails from "./PrintDetails"
-import { Box, Center, Flex, Spacer } from "@chakra-ui/react"
+import { Box, Center, Container, Flex, Spacer, Spinner, Text } from "@chakra-ui/react"
 import PrintEvo from "./PrintEvo"
 
 export const fetcher = (url) => {
@@ -43,10 +43,25 @@ export default function Pokemon({ name, url, newSearch }) {
   const Evo = FetchPkdxData(EvoName, url, evolution)
 
   if (pkmnError) {
-    return <div>no pokemon</div>
+    return (
+      <Box position={'relative'} mt={'130px'} justifyContent={'center'}>
+        <Text fontSize={'70px'} zIndex={'50'} textAlign={'center'}>NO PKMN</Text>
+      </Box>
+    )
   }
   if (!pkmn) {
-    return <div>pkmn cargando...</div>
+    return (
+      <Box position={"relative"} mt={"130px"}>
+        <Container width={"100%"} h={"550px"} justifyContent={"center"}>
+          <Center>
+            <Spinner color="red.500" size={"xl"} thickness={"4px"} />
+          </Center>
+        </Container>
+        <Text fontSize={"70px"} zIndex={"50"} textAlign={"center"}>
+          pkmn cargando...
+        </Text>
+      </Box>
+    )
   }
   if (speciesError) {
     return <div>no species</div>
@@ -55,50 +70,59 @@ export default function Pokemon({ name, url, newSearch }) {
     return <div>species cargando...</div>
   }
   if (evolutionError) {
-    return <div>no evolution to show</div>
+    return (
+      <Box position={'relative'} mt={'130px'} justifyContent={'center'}>
+        <Text fontSize={'70px'} zIndex={'50'} textAlign={'center'}>no evolution to show</Text>
+      </Box>
+    )
   }
   if (!evolution) {
-    return <div>evolution cargando...</div>
+    return (
+      <Box position={"relative"} mt={"130px"}>
+        <Container width={"100%"} h={"550px"} justifyContent={"center"}>
+          <Center>
+            <Spinner color="red.500" size={"xl"} thickness={"4px"} />
+          </Center>
+        </Container>
+        <Text fontSize={"70px"} zIndex={"50"} textAlign={"center"}>
+          Loading Evolutions....
+        </Text>
+      </Box>
+    )
   }
   // console.log(Evo3)
   // console.log(evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name)
+  const isLoading = () => {
+    return ( 
+      <Flex>
+      </Flex>
+    )
+  }
 
   return (
     <>
-      <Center>
-        {/* serached pkmn */}
-        <PrintPkmn name={pkmn.name} urlimg={url}>
-          <PrintDetails name={pkmn.name} url={url} />
-        </PrintPkmn>
-      </Center>
-      <Flex
-        direction={["column", "column", "row", "row"]}
-        justifyContent={"space-around"}
-        alignItems={"baseline"}
-      >
-        {/* <PrintPkmn name={EvoName} urlimg={url}>
-          <PrintDetails name={EvoName} url={url} /> 
-        </PrintPkmn> */}
+      <Flex direction={"column"}>
+        <Center >
+          {/* serached pkmn */}
+          <PrintPkmn name={pkmn.name} urlimg={url}>
+            <PrintDetails name={pkmn.name} url={url} />
+          </PrintPkmn>
+        </Center>
+          <Flex
+            direction={["column", "column", "row", "row"]}
+            justifyContent={"space-around"}
+            alignItems={"center"}
+          >
+            <PrintEvo name={EvoName} urlimg={url} newSearch={newSearch} />
+            
+            {EvoName2 && (
+              <PrintEvo name={EvoName2} urlimg={url} newSearch={newSearch} />
+            )}
+            {EvoName3 && (
+              <PrintEvo name={EvoName3} urlimg={url} newSearch={newSearch} />
+            )}
+          </Flex>
         
-          {/* <Box> */}
-          <PrintEvo name={EvoName} urlimg={url} newSearch={newSearch} />
-          {/* </Box>
-          <Spacer /> */}
-          {EvoName2 && (
-            <PrintEvo name={EvoName2} urlimg={url} newSearch={newSearch} />
-          )}
-          {EvoName3 && (
-            <PrintEvo name={EvoName3} urlimg={url} newSearch={newSearch} />
-          )}
-        
-        {/* 
-        <PrintPkmn name={EvoName2} urlimg={url}>
-          <PrintDetails name={EvoName2} url={url} />
-        </PrintPkmn>
-
-        <PrintPkmn name={EvoName3} urlimg={url}>
-          <PrintDetails name={EvoName3} url={url} />
-        </PrintPkmn> */}
       </Flex>
     </>
   )

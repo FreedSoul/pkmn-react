@@ -29,11 +29,12 @@ export default function MiscInfo({ details }) {
       <>
         <Container
           bg={"rgba(0,255,148,0.6)"}
-          position={"absolute"}
-          top={"-40px"}
-          left={"250px"}
-          h="330px"
-          maxW={"390px"}
+          // position={"absolute "}
+          // top={"-40px"}
+          // left={"250px"}
+          mt="110"
+          h="fit-content"
+          w={"240px"}
           border={"2px"}
           borderRadius="8.3"
         >
