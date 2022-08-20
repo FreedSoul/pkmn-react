@@ -36,7 +36,7 @@ function FetchDetails(name, url) {
   }
 }
 
-export default function PrintDetails({ name, url }) {
+export default function PrintDetails({ name, url, compare }) {
   // const [misc, setMisc] = useBoolean()
   // const [stats, setStats] = useBoolean()
   // const [level, setLevel] = useBoolean()
@@ -45,7 +45,7 @@ export default function PrintDetails({ name, url }) {
   const [stats, setStats] = useState(true)
   const [level, setLevel] = useState(false)
   const [machine, setMachine] = useState(false)
-
+  console.log(compare)
   const details = FetchDetails(name, url).details
 
   return (
@@ -143,22 +143,35 @@ export default function PrintDetails({ name, url }) {
             </VStack>
           </HStack>
 
-          <Hide breakpoint="(max-width: 480px)">
-            <Flex
-              direction={["column", "column", "row", "row"]}
-              position={"relative"}
-              top={"-350px"}
-              left={"250px"}
-            >
-              {misc && <MiscInfo details={details} />}
-              {stats && <ShowStats details={details} />}
-              {level && <MovesLevel details={details} />}
-              {machine && <MovesMachine details={details} />}
-            </Flex>
-          </Hide>
+          {/* <Hide breakpoint="(max-width: 480px)"> */}
+          <Flex
+            direction={["column", "column", "row", "row"]}
+            position={"relative"}
+            mt={["0px", "0px", "0px", "0px"]}
+            top={
+              compare
+                ? ["0px", "-350px", "0px", "0px"]
+                : ["0px", "-350px", "-350px", "-350px"]
+            }
+            left={
+              compare
+                ? ["0px", "250px", "0px", "0px"]
+                : ["0px", "250px", "250px", "250px"]
+            }
+          >
+            {misc && <MiscInfo details={details} />}
+            {stats && <ShowStats details={details} />}
+            {level && <MovesLevel details={details} />}
+            {machine && <MovesMachine details={details} />}
+          </Flex>
+          {/* </Hide>
           <Show breakpoint="(max-width: 480px)">
             <Flex
-              direction={["column", "column", "row", "row"]}
+              direction={
+                compare
+                  ? ["row", "row", "row", "row"]
+                  : ["column", "column", "row", "row"]
+              }
               position={"absolute"}
               top={"200px"}
               left={"0px"}
@@ -168,7 +181,7 @@ export default function PrintDetails({ name, url }) {
               {level && <MovesLevel details={details} />}
               {machine && <MovesMachine details={details} />}
             </Flex>
-          </Show>
+          </Show> */}
         </div>
       )}
     </>

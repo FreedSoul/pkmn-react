@@ -66,10 +66,9 @@ export default function Home() {
           borderColor={"black"}
           focusBorderColor="black"
           color={"black"}
-          // backgroundColor={'red'}
-          // BackgroudColor="green.200"
+          
           position={"relative"}
-          right={["0vw","10vw", "10vw", "9vw"]}
+          right={["16vw","10vw", "10vw", "9vw"]}
           top={"20px"}
           size={["xs", "sm", "sm"]}
           fontSize={["sm", "sm"]}
@@ -89,8 +88,6 @@ export default function Home() {
           alt={"frame"}
           // layout={"fill"}
         ></Image>
-        
-        
       </VStack>
       {/* <DebounceInput
           value={pkname}

@@ -23,10 +23,12 @@ in a much more concise way avoiding interesting, but not relevant info to play
 - day 9: learning to use chakra ui, a diferent approach to make css, i realize the power using props as css rules, join with react states
 - day 10: getting done the last details of pokedex index
 - day 11: added responsive with chakra-ui to pokedex index
+- day 12: working on compare page 80%, reutilizing components from pokedex, with flags to apply conditional rendering
 
 ## reminder
 
 - remember when passing functions as props to child just send the reference like [theprop={handlerX}] or to send arguments use [theprop={()=>handlerX(...args)}]never use [theprop={handlerX()}] <-- this make the function to inmediately being executed in every rerender
 - how do you pass data from the child to parent?, using callbacks
-- icons react-icons, GiCompactDisc, GiCrossedSwords, BsArrowRepeat, CgArrowUpR, ImStatsBars, abilites: TbHierarchy2, add pkmn: RiAddCircleLine, GiWeightScale, CgFormatLineHeight, types: BiIntersect - BsIntersect, page compare: MdCompare, page whatpkmn: BsQuestionSquareFill - BsQuestionDiamond - GiDominoMask - FaMask, details: TbListDetails
+- icons react-icons, --GiCompactDisc, --GiCrossedSwords, BsArrowRepeat, --CgArrowUpR, --ImStatsBars, abilites: TbHierarchy2, add pkmn: RiAddCircleLine, GiWeightScale, CgFormatLineHeight, types: BiIntersect - BsIntersect, page compare: MdCompare, page whatpkmn: BsQuestionSquareFill - BsQuestionDiamond - GiDominoMask - FaMask, details: TbListDetails
 - make children relative to parent #parent{position:relative} #children{postion:absolute,top:0...} [more](https://stackoverflow.com/questions/5209814/can-i-position-an-element-fixed-relative-to-parent)
+- to do: add evolution arrow with triggers, history of compared pkmns (localstorage), change the bg color of pokedex depends of pkmn type

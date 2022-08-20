@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react"
 import FetchPkdxData from "./FetchPkdxData"
 
-export default function PrintPkmn({ name, urlimg, children }) {
+export default function PrintPkmn({ name, urlimg, children, compare }) {
   const pkmn = FetchPkdxData(name, urlimg, name)
   return (
     <>
@@ -22,7 +22,7 @@ export default function PrintPkmn({ name, urlimg, children }) {
           direction={"column"}
           mt={["140px", "130px", "130px"]}
           mb={["310px", "0px", "0px"]}
-          right={["0vw", "24vw", "10vw"]}
+          right={compare ? ["0vw", "20vw", "0vw"] : ["0vw", "24vw", "10vw"]}
           h={"260px"}
           w={"250px"}
           bg="rgba(0,255,148,0.6)"
