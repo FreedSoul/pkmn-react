@@ -5,15 +5,9 @@ import { fetcher } from "./pokemon"
 import {
   Box,
   Button,
-  Center,
-  Container,
   Flex,
-  Heading,
-  Hide,
   HStack,
-  Show,
   Text,
-  UnorderedList,
   VStack,
 } from "@chakra-ui/react"
 import MiscInfo from "./MiscInfo"
@@ -145,17 +139,22 @@ export default function PrintDetails({ name, url, compare }) {
 
           {/* <Hide breakpoint="(max-width: 480px)"> */}
           <Flex
+            className="Aqui-la-clase-compartida"
             direction={["column", "column", "row", "row"]}
             position={"relative"}
-            mt={["0px", "0px", "0px", "0px"]}
+            mt={
+              compare
+                ? ["20px", "20px", "20px", "20px"]
+                : ["110px", "110px", "110px", "110px"]
+            }
             top={
               compare
-                ? ["0px", "-350px", "0px", "0px"]
+                ? ["100px", "100px", "100px", "100px"]
                 : ["0px", "-350px", "-350px", "-350px"]
             }
             left={
               compare
-                ? ["0px", "250px", "0px", "0px"]
+                ? ["0px", "0px", "0px", "0px"]
                 : ["0px", "250px", "250px", "250px"]
             }
           >

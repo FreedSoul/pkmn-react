@@ -20,12 +20,16 @@ export default function PrintPkmn({ name, urlimg, children, compare }) {
         // className={styles.pkmnevo}
         <Flex
           direction={"column"}
-          mt={["140px", "130px", "130px"]}
-          mb={["310px", "0px", "0px"]}
-          right={compare ? ["0vw", "20vw", "0vw"] : ["0vw", "24vw", "10vw"]}
+          mt={["140px", "130px", "130px", "130px"]}
+          mb={["310px", "0px", "0px", "0px"]}
+          right={
+            compare
+              ? ["0vw", "0vw", "0vw", "0vw"]
+              : ["0vw", "24vw", "10vw", "0vw"]
+          }
           h={"260px"}
           w={"250px"}
-          bg="rgba(0,255,148,0.6)"
+          bg={"rgba(0,255,148,0.6)"}
           border={"2px"}
           borderRadius="8.3"
           position={"relative"}

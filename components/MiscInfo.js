@@ -54,7 +54,7 @@ export default function MiscInfo({ details }) {
         // position={"relative"}
         // top={"-40px"}
         // left={"250px"}
-        mt="110"
+        // mt="110"
         w={'240px'}
         h="fit-content"
         border={"2px"}

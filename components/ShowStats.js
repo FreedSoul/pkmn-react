@@ -32,7 +32,7 @@ export default function MiscInfo({ details }) {
           // position={"absolute "}
           // top={"-40px"}
           // left={"250px"}
-          mt="110"
+          // mt="110"
           h="fit-content"
           w={"240px"}
           border={"2px"}

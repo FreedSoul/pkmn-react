@@ -39,17 +39,18 @@ export default function movesMachine({ details }) {
         // position={"absolute"}
         // top={"-40px"}
         // left={"250px"}
-        mt="110"
+        // mt="110"
+        position={"static"}
         h="fit-content"
-        w={"240px"}
+        w={["250px", "230px", "250px", "250px"]}
         border={"2px"}
         borderRadius="8.3"
       >
         <Heading as={"h3"} fontSize={"lg"} textAlign="center">
           Moves Machine
         </Heading>
-        <Box fontSize={"xs"}>
-          <ul style={{ listStyleType: "none", columns: "2" }}>
+        <Box fontSize={"12px"}>
+          <ul style={{ listStyleType:'circle',columns: "3" }}>
             {movesMachine}
           </ul>
         </Box>

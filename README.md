@@ -31,4 +31,5 @@ in a much more concise way avoiding interesting, but not relevant info to play
 - how do you pass data from the child to parent?, using callbacks
 - icons react-icons, --GiCompactDisc, --GiCrossedSwords, BsArrowRepeat, --CgArrowUpR, --ImStatsBars, abilites: TbHierarchy2, add pkmn: RiAddCircleLine, GiWeightScale, CgFormatLineHeight, types: BiIntersect - BsIntersect, page compare: MdCompare, page whatpkmn: BsQuestionSquareFill - BsQuestionDiamond - GiDominoMask - FaMask, details: TbListDetails
 - make children relative to parent #parent{position:relative} #children{postion:absolute,top:0...} [more](https://stackoverflow.com/questions/5209814/can-i-position-an-element-fixed-relative-to-parent)
+- to fix the blank line space in background in mobile view ~320px, look line 7,8,9 in globals.css (work in chrome, not necessary in firefox) [link to solution](https://stackoverflow.com/questions/4617872/white-space-showing-up-on-right-side-of-page-when-background-image-should-extend)
 - to do: add evolution arrow with triggers, history of compared pkmns (localstorage), change the bg color of pokedex depends of pkmn type

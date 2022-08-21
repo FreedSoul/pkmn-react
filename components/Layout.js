@@ -16,7 +16,7 @@ export default function Layout({ children }) {
           backgroundClip={'padding-box'}
           backgroundAttachment={'fixed'}
           backgroundSize={'cover'}
-          height="2500px"
+          height="3500px"
           w={'100vw'}
         >
         {children}
