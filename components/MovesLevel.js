@@ -48,12 +48,9 @@ export default function MovesLevel({ details }) {
     <>
       <Container
         bg={"rgba(0,255,148,0.6)"}
-        // position={"absolute"}
-        // top={"-40px"}
-        // left={"250px"}
-        // mt="110"
         h="fit-content"
-        w={"240px"}
+        // h={["340px", "360px", "360px", "360px"]}
+        w={["300px", "250px", "250px", "350px"]}
         border={"2px"}
         borderRadius="8.3"
       >

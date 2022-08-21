@@ -34,7 +34,8 @@ export default function MiscInfo({ details }) {
           // left={"250px"}
           // mt="110"
           h="fit-content"
-          w={"240px"}
+          minH={'360px'}
+          w={["300px", "250px", "250px", "350px"]}
           border={"2px"}
           borderRadius="8.3"
         >

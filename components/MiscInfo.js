@@ -55,7 +55,7 @@ export default function MiscInfo({ details }) {
         // top={"-40px"}
         // left={"250px"}
         // mt="110"
-        w={'240px'}
+        w={["300px", "250px", "250px", "350px"]}
         h="fit-content"
         border={"2px"}
         borderRadius="8.3"

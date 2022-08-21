@@ -45,8 +45,13 @@ export default function PrintDetails({ name, url, compare }) {
   return (
     <>
       {details && (
-        <div>
-          <HStack justifyContent="space-around" mt={5}>
+        <>
+          <HStack
+            justifyContent="space-around"
+            position={"relative"}
+            top={["20%", "25%", "22%", "22%"]}
+            mt={5}
+          >
             <VStack direction={"column"}>
               <Button
                 h={"30px"}
@@ -139,23 +144,23 @@ export default function PrintDetails({ name, url, compare }) {
 
           {/* <Hide breakpoint="(max-width: 480px)"> */}
           <Flex
-            className="Aqui-la-clase-compartida"
+            className="Aqui-Print-details"
             direction={["column", "column", "row", "row"]}
             position={"relative"}
-            mt={
-              compare
-                ? ["20px", "20px", "20px", "20px"]
-                : ["110px", "110px", "110px", "110px"]
-            }
+            // mt={
+            //   compare
+            //     ? ["20px", "20px", "20px", "20px"]
+            //     : ["180px", "132px", "132px", "132px"]
+            // }
             top={
               compare
-                ? ["100px", "100px", "100px", "100px"]
-                : ["0px", "-350px", "-350px", "-350px"]
+                ? ["170px", "190px", "190px", "190px"]
+                : ["170px", "-215px", "-215px", "-215px"]
             }
             left={
               compare
                 ? ["0px", "0px", "0px", "0px"]
-                : ["0px", "250px", "250px", "250px"]
+                : ["0px", "260px", "280px", "300px"]
             }
           >
             {misc && <MiscInfo details={details} />}
@@ -181,7 +186,7 @@ export default function PrintDetails({ name, url, compare }) {
               {machine && <MovesMachine details={details} />}
             </Flex>
           </Show> */}
-        </div>
+        </>
       )}
     </>
   )

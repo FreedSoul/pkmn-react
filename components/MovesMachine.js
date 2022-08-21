@@ -40,9 +40,9 @@ export default function movesMachine({ details }) {
         // top={"-40px"}
         // left={"250px"}
         // mt="110"
-        position={"static"}
+        // position={"static"}
         h="fit-content"
-        w={["250px", "230px", "250px", "250px"]}
+        w={["300px", "250px", "250px", "350px"]}
         border={"2px"}
         borderRadius="8.3"
       >

@@ -25,10 +25,14 @@ export default function PrintPkmn({ name, urlimg, children, compare }) {
           right={
             compare
               ? ["0vw", "0vw", "0vw", "0vw"]
-              : ["0vw", "24vw", "10vw", "0vw"]
+              : ["0vw", "125px", "10vw", "10vw"]
           }
-          h={"260px"}
-          w={"250px"}
+          h={["340px", "360px", "360px", "360px"]}
+          w={
+            compare
+              ? ["300px", "300px", "300px", "300px"]
+              : ["300px", "260px", "300px", "300px"]
+          }
           bg={"rgba(0,255,148,0.6)"}
           border={"2px"}
           borderRadius="8.3"
@@ -38,7 +42,7 @@ export default function PrintPkmn({ name, urlimg, children, compare }) {
             width={"300px"}
             height={"100px"}
             position={"absolute"}
-            top="-60px"
+            top="-18%"
             // boxSize={"100px"}
             src={"/pokedex-edge-top.svg"}
             alt={name}
@@ -48,7 +52,7 @@ export default function PrintPkmn({ name, urlimg, children, compare }) {
             width={"300px"}
             height={"100px"}
             position={"absolute"}
-            top="210px"
+            top="85%"
             src={"/pokedex-edge-bot.svg"}
             alt={name}
             // layout={"fill"}
@@ -65,9 +69,9 @@ export default function PrintPkmn({ name, urlimg, children, compare }) {
                 {name}
               </Heading>
               {/* className={styles.pkmnimg} */}
-              <Box maxW="md" h={"100px"} w={"100px"}>
+              <Box maxW="md" h={"100px"} w={"200px"}>
                 <Image
-                  boxSize={"100px"}
+                  boxSize={"200px"}
                   src={pkmn.pkdx?.sprites?.front_default ?? "/pokedex-icon.png"}
                   alt={name}
                   layout={"fill"}
