@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react"
 import FetchPkdxData from "./FetchPkdxData"
 
-export default function PrintPkmn({ name, urlimg, children, compare }) {
+export default function PrintPkmn({ name, urlimg, children, compare, filter}) {
   const pkmn = FetchPkdxData(name, urlimg, name)
   return (
     <>
@@ -30,7 +30,7 @@ export default function PrintPkmn({ name, urlimg, children, compare }) {
           h={["340px", "360px", "360px", "360px"]}
           w={
             compare
-              ? ["300px", "300px", "300px", "300px"]
+              ? ["300px", "300px", "250px", "300px"]
               : ["300px", "260px", "300px", "300px"]
           }
           bg={"rgba(0,255,148,0.6)"}
@@ -75,6 +75,7 @@ export default function PrintPkmn({ name, urlimg, children, compare }) {
                   src={pkmn.pkdx?.sprites?.front_default ?? "/pokedex-icon.png"}
                   alt={name}
                   layout={"fill"}
+                  filter={filter&&"brightness(0)"}
                 ></Image>
               </Box>
             </Flex>

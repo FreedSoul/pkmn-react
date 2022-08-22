@@ -40,8 +40,8 @@ export default function Compare() {
   const [tabIndex, setTabIndex] = useState(0)
   const bg = colors[tabIndex]
 
-  const [showSlot, setShowSlot] = useState(true)
-  const [showSlot2, setShowSlot2] = useState(false)
+  const [showSlot, setShowSlot] = useState(false)
+  const [showSlot2, setShowSlot2] = useState(true)
   const [showSlot3, setShowSlot3] = useState(false)
 
   return (
@@ -78,21 +78,21 @@ export default function Compare() {
           zIndex={"1"}
           mt={["30px", "20px"]}
           bg="rgba(0, 230, 203, 0.34)"
-          border={'2px'}
-          borderColor={'white'}
+          border={"2px"}
+          borderColor={"white"}
           padding={"30px"}
         >
           Let&lsquo;s compare some Pokemons!
         </Heading>
       </Center>
       {/* <Center> */}
-      <Show breakpoint="(max-width: 767px)">
+      <Show breakpoint="(max-width: 768px)">
         <Tabs
           isFitted
           variant="enclosed"
           onChange={(index) => setTabIndex(index)}
           bg={bg}
-          mt={'10px'}
+          mt={"10px"}
         >
           <TabList mb="1em">
             <Tab
@@ -118,9 +118,7 @@ export default function Compare() {
             <TabPanel>
               <VStack>
                 <Button border={"1px"} onClick={() => setShowSlot(!showSlot)}>
-                  {showSlot
-                    ? "click to hide this Slot"
-                    : "click to add this Slot"}
+                  {showSlot ? "Delete Slot" : "Add Slot"}
                 </Button>
                 {showSlot ? <CompareSlot show={showSlot}></CompareSlot> : ""}
               </VStack>
@@ -128,9 +126,7 @@ export default function Compare() {
             <TabPanel>
               <VStack>
                 <Button border={"1px"} onClick={() => setShowSlot2(!showSlot2)}>
-                  {showSlot2
-                    ? "click to hide this Slot"
-                    : "click to add this Slot"}
+                  {showSlot2 ? "Delete Slot" : "Add Slot"}
                 </Button>
                 {showSlot2 ? <CompareSlot show={showSlot2}></CompareSlot> : ""}
               </VStack>
@@ -138,9 +134,7 @@ export default function Compare() {
             <TabPanel>
               <VStack>
                 <Button border={"1px"} onClick={() => setShowSlot3(!showSlot3)}>
-                  {showSlot3
-                    ? "click to hide this Slot"
-                    : "click to add this Slot"}
+                  {showSlot3 ? "Delete Slot" : "Add Slot"}
                 </Button>
                 {showSlot3 ? <CompareSlot show={showSlot3}></CompareSlot> : ""}
               </VStack>
@@ -148,7 +142,7 @@ export default function Compare() {
           </TabPanels>
         </Tabs>
       </Show>
-      <Hide breakpoint="(max-width: 767px)">
+      <Hide breakpoint="(max-width: 768px)">
         <Flex
           direction={["column", "column", "row", "row"]}
           justify={"space-around"}
