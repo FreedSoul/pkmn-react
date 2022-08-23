@@ -5,6 +5,7 @@ import PrintPkmn from "../components/PrintPkmn"
 import FetchPkdxData from "../components/FetchPkdxData"
 import { DebounceInput } from "react-debounce-input"
 import Link from "next/link"
+import {BsArrowRepeat} from "react-icons/bs"
 import {
   Box,
   Button,
@@ -13,14 +14,17 @@ import {
   Heading,
   Input,
   Spacer,
+  Text,
   VStack,
 } from "@chakra-ui/react"
 
 export default function WhatPkmn() {
   const [whatpkmn, setwhatpkmn] = useState("")
   // const [pkmnInfo, setPkmnInfo] = useState({})
-  const [answer, setAnswer] = useState("")
+  const [answer, setAnswer] = useState(null)
+  const [filter, setFilter] = useState(true)
   const [pkmnId, setPkmnId] = useState(0)
+  // const [winaudio, setWinaudio] = useState(null)
   const url = `https://pokeapi.co/api/v2/pokemon/`
   const totalpkmns = 905
   const pkmnInfo = FetchPkdxData(pkmnId, url, pkmnId)
@@ -33,15 +37,33 @@ export default function WhatPkmn() {
   useEffect(() => {
     setwhatpkmn(pkmnInfo?.pkdx?.name)
   }, [pkmnInfo])
-  // console.log({ whatpkmn }, { answer })
 
-  const handleRefresh = () => {
-    setwhatpkmn(pkmnInfo?.pkdx?.name), setPkmnId(getARandomId)
+  useEffect(() => {
+    if (whatpkmn === answer) {
+      setFilter(false)
+    }
+  }, [whatpkmn, answer])
+  // console.log({filter})
+  // useEffect(() => {
+  //   setWinaudio(
+  //     new Audio(
+  //       // "https://www.myinstants.com/media/sounds/06-caught-a-pokemon.mp3"
+  //       "/level-up.mp3"
+  //     )
+  //   ) // only call client
+  // }, [])
+
+  const handleRefresh = (e) => {
+    setwhatpkmn(pkmnInfo?.pkdx?.name),
+    setPkmnId(getARandomId),
+    setFilter(true),
+    (e.target.value = ""),
+    setAnswer("")
   }
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    // hola.current.value = ''
-  }
+  // const handleSubmit = (event) => {
+  //   event.preventDefault()
+  //   hola.current.value = ''
+  // }
   return (
     <div className={styles.container}>
       <Flex>
@@ -89,8 +111,18 @@ export default function WhatPkmn() {
             position={"relative"}
             right={["0vw", "-125px", "-10vw", "-10vw"]}
           >
-            <Box >
-              <PrintPkmn name={pkmnId} urlimg={url} filter></PrintPkmn>
+            <Box>
+              <PrintPkmn name={pkmnId} urlimg={url} filter={filter} />
+              {/* {whatpkmn === answer && ( */}
+              {/* <audio id="pkmnlvl">
+                <source
+                  autoPlay
+                  src={winaudio}
+                  type="audio/mpeg"
+                />
+                you browser is shit
+              </audio> */}
+              {/* )} */}
             </Box>
           </Box>
           <Box position={"relative"} top="40px">
@@ -98,7 +130,7 @@ export default function WhatPkmn() {
               padding={"8px"}
               bg={"rgba(0, 229, 201, 0.73)"}
               position="relative"
-              top={"-260px"}
+              top={"-160px"}
               borderRadius={"5px"}
             >
               <Input
@@ -131,16 +163,21 @@ export default function WhatPkmn() {
               position={"relative"}
               top={"-100px"}
               right={"-100px"}
+              Size='lg'
               bg={"grey"}
               onClick={handleRefresh}
+              fontSize={'64px'}
+              // leftIcon={}
             >
-              recargar pokemon
+              <BsArrowRepeat >hi</BsArrowRepeat>
+              <Text fontSize={'sm'}>
+                another pokemon
+                </Text>
             </Button>
           </Box>
         </VStack>
         <Box bg={"white"} position={"relative"}>
-          {whatpkmn === answer &&
-            "you guessed it (destapar el pokemon tambn despues de tener el filtro)"}
+          {whatpkmn === answer && "you guessed it"}
         </Box>
       </VStack>
     </div>
