@@ -1,11 +1,7 @@
-import styles from "../styles/Home.module.css"
-import { useState, useRef } from "react"
-import PrintPkmn from "../components/PrintPkmn"
-import PrintDetails from "../components/PrintDetails"
-import { DebounceInput } from "react-debounce-input"
-import FetchPkdxData from "../components/FetchPkdxData"
+import { useState} from "react"
 import Link from "next/link"
 import { RiAddCircleLine } from "react-icons/ri"
+import { BiMinusCircle } from "react-icons/bi"
 import {
   Box,
   Button,
@@ -13,9 +9,6 @@ import {
   Flex,
   Heading,
   Hide,
-  HStack,
-  Image,
-  Input,
   Show,
   Spacer,
   Tab,
@@ -45,7 +38,7 @@ export default function Compare() {
   const [showSlot3, setShowSlot3] = useState(false)
 
   return (
-    <div className={"Te-UBICO-compare-solito"}>
+    <div>
       <Flex>
         <Box
           p="2"
@@ -85,7 +78,6 @@ export default function Compare() {
           Let&lsquo;s compare some Pokemons!
         </Heading>
       </Center>
-      {/* <Center> */}
       <Show breakpoint="(max-width: 768px)">
         <Tabs
           isFitted
@@ -117,7 +109,11 @@ export default function Compare() {
           <TabPanels>
             <TabPanel>
               <VStack>
-                <Button border={"1px"} onClick={() => setShowSlot(!showSlot)}>
+                <Button
+                  border={"1px"}
+                  onClick={() => setShowSlot(!showSlot)}
+                  leftIcon={!showSlot ? <RiAddCircleLine /> : <BiMinusCircle />}
+                >
                   {showSlot ? "Delete Slot" : "Add Slot"}
                 </Button>
                 {showSlot ? <CompareSlot show={showSlot}></CompareSlot> : ""}
@@ -125,7 +121,11 @@ export default function Compare() {
             </TabPanel>
             <TabPanel>
               <VStack>
-                <Button border={"1px"} onClick={() => setShowSlot2(!showSlot2)}>
+                <Button
+                  border={"1px"}
+                  onClick={() => setShowSlot2(!showSlot2)}
+                  leftIcon={!showSlot ? <RiAddCircleLine /> : <BiMinusCircle />}
+                >
                   {showSlot2 ? "Delete Slot" : "Add Slot"}
                 </Button>
                 {showSlot2 ? <CompareSlot show={showSlot2}></CompareSlot> : ""}
@@ -133,7 +133,11 @@ export default function Compare() {
             </TabPanel>
             <TabPanel>
               <VStack>
-                <Button border={"1px"} onClick={() => setShowSlot3(!showSlot3)}>
+                <Button
+                  border={"1px"}
+                  onClick={() => setShowSlot3(!showSlot3)}
+                  leftIcon={!showSlot ? <RiAddCircleLine /> : <BiMinusCircle />}
+                >
                   {showSlot3 ? "Delete Slot" : "Add Slot"}
                 </Button>
                 {showSlot3 ? <CompareSlot show={showSlot3}></CompareSlot> : ""}
@@ -148,47 +152,6 @@ export default function Compare() {
           justify={"space-around"}
           pt={"5px"}
         >
-          {/* <VStack
-            mt={["130px", "130px", "90px"]}
-            bg="rgba(0,255,148,0.6)"
-            height={["850px", "500px", "900px", "900px"]}
-            padding={"1vw"}
-          >
-            <Box
-              padding={"8px"}
-              bg={"rgba(0, 229, 201, 0.73)"}
-              position="relative"
-              top={"-60px"}
-              borderRadius={"5px"}
-            >
-              <Input
-                as={DebounceInput}
-                value={compare1}
-                onChange={(event) => setCompare1(event.target.value)}
-                variant={"filled"}
-                bg="rgba(0,255,148,0.6)"
-                zIndex={"1"}
-                border={"2px"}
-                borderColor={"black"}
-                focusBorderColor={"black"}
-                color={"black"}
-                position={"static"}
-                // right={["10vw", "10vw", "10vw", "10vw"]}
-                top={"-60px"}
-                size={["xs", "sm", "sm"]}
-                fontSize={["sm", "sm"]}
-                placeholder="enter a pokemon name..."
-                width={["180px", "230px", "300px"]}
-                type="text"
-                name="pkname"
-                debounceTimeout={500}
-                minLength={2}
-              />
-            </Box>
-            <PrintPkmn name={compare1} urlimg={url} compare>
-              <PrintDetails name={compare1} url={url} compare />
-            </PrintPkmn>
-          </VStack> */}
           <VStack>
             <Button border={"1px"} onClick={() => setShowSlot(!showSlot)}>
               {showSlot ? "click to hide this Slot" : "click to add this Slot"}
@@ -207,92 +170,8 @@ export default function Compare() {
             </Button>
             {showSlot3 ? <CompareSlot show={showSlot3}></CompareSlot> : ""}
           </VStack>
-
-          {/* <VStack
-          mt={["100px", "130px", "90px"]}
-          bg="rgba(0,255,148,0.6)"
-          height={["850px", "500px", "900px", "900px"]}
-          padding={"1vw"}
-        >
-          <Box
-            padding={"8px"}
-            bg={"rgba(0, 229, 201, 0.73)"}
-            position="relative"
-            top={"-60px"}
-            borderRadius={"5px"}
-          >
-            <Input
-              as={DebounceInput}
-              value={compare2}
-              onChange={(event) => setCompare2(event.target.value)}
-              variant={"filled"}
-              bg="rgba(0,255,148,0.6)"
-              zIndex={"1"}
-              border={"2px"}
-              borderColor={"black"}
-              focusBorderColor="black"
-              color={"black"}
-              position={"static"}
-              // right={["10vw", "10vw", "10vw", "10vw"]}
-              top={"-60px"}
-              size={["xs", "sm", "sm"]}
-              fontSize={["sm", "sm"]}
-              placeholder="enter a pokemon name..."
-              width={["180px", "230px", "300px"]}
-              type="text"
-              name="pkname"
-              debounceTimeout={500}
-              minLength={2}
-            />
-          </Box>
-          <PrintPkmn name={compare2} urlimg={url} compare>
-            <PrintDetails name={compare2} url={url} compare={true} />
-          </PrintPkmn>
-        </VStack>
-        <VStack
-          mt={["100px", "130px", "90px"]}
-          bg="rgba(0,255,148,0.6)"
-          height={["850px", "500px", "900px", "900px"]}
-          padding={"1vw"}
-        >
-          <Box
-            padding={"8px"}
-            bg={"rgba(0, 229, 201, 0.73)"}
-            position="relative"
-            top={"-60px"}
-            borderRadius={"5px"}
-          >
-            <Input
-              as={DebounceInput}
-              value={compare3}
-              onChange={(event) => setCompare3(event.target.value)}
-              variant={"filled"}
-              bg="rgba(0,255,148,0.6)"
-              zIndex={"1"}
-              border={"2px"}
-              borderColor={"black"}
-              focusBorderColor="black"
-              color={"black"}
-              position={"static"}
-              // right={["10vw", "10vw", "10vw", "10vw"]}
-              top={"-60px"}
-              size={["xs", "sm", "sm"]}
-              fontSize={["sm", "sm"]}
-              placeholder="enter a pokemon name..."
-              width={["180px", "230px", "300px"]}
-              type="text"
-              name="pkname"
-              debounceTimeout={500}
-              minLength={2}
-            />
-          </Box>
-          <PrintPkmn name={compare3} urlimg={url} compare>
-            <PrintDetails name={compare3} url={url} compare />
-          </PrintPkmn>
-        </VStack> */}
         </Flex>
       </Hide>
-      {/* </Center> */}
     </div>
   )
 }
