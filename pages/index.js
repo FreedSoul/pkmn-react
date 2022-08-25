@@ -89,7 +89,7 @@ export default function Home() {
           width={"100%"}
           height={"150px"}
           position={"absolute"}
-          top="80px"
+          top="120px"
           src={"/fut-frame.svg"}
           alt={"frame"}
           // layout={"fill"}
