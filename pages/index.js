@@ -19,7 +19,7 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.container}>
+    <>
       <Flex>
         <Box
           p="2"
@@ -89,7 +89,7 @@ export default function Home() {
           width={"100%"}
           height={"150px"}
           position={"absolute"}
-          top="60px"
+          top="70px"
           src={"/fut-frame.svg"}
           alt={"frame"}
           // layout={"fill"}
@@ -111,6 +111,6 @@ export default function Home() {
         url={url}
         newSearch={handleNewPkmn}
       />
-    </div>
+    </>
   )
 }
