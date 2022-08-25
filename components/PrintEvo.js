@@ -57,9 +57,15 @@ export default function PrintEvo(props) {
               mt={10}
             >
               <Button
-                size={"md"}
+                // h={"510px"}
+                w={"calc(100%+5px)"}
+                bg={"rgba(0,0,0,0.45)"}
                 textDecorationLine={"underline"}
-                color={"blue"}
+                color={"white"}
+                border={"1px"}
+                borderColor={"white"}
+                _hover={{bg:'cyan.400'}}
+                boxShadow={"4px 5px 3px 1px rgba(0,0,0,0.75)"}
                 onClick={() => props.newSearch(pruebaName)}
               >
                 {props.name}

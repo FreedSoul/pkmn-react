@@ -58,9 +58,10 @@ export default function PrintDetails({ name, url, compare }) {
                 w="30px"
                 bg={!level ? "white" : "rgba(0,0,0,0.45)"}
                 border={level ? "2px" : ""}
-                borderColor={"green"}
+                borderColor={"blue.300"}
                 _hover={"unset"}
                 boxShadow={!level ? "4px 5px 3px 1px rgba(0,0,0,0.75)" : ""}
+                aria-label="see moves by level"
                 onClick={() => {
                   setStats(false)
                   setLevel(!level)
@@ -80,9 +81,10 @@ export default function PrintDetails({ name, url, compare }) {
                 w="30px"
                 bg={!machine ? "white" : "rgba(0,0,0,0.45)"}
                 border={machine ? "2px" : ""}
-                borderColor={"green"}
+                borderColor={"blue.300"}
                 _hover={"unset"}
                 boxShadow={!machine ? "4px 5px 3px 1px rgba(0,0,0,0.75)" : ""}
+                aria-label="see moves can learn by Technical Machine"
                 onClick={() => {
                   setStats(false)
                   setLevel(false)
@@ -102,15 +104,16 @@ export default function PrintDetails({ name, url, compare }) {
                 w="30px"
                 bg={!misc ? "white" : "rgba(0,0,0,0.45)"}
                 border={misc ? "2px" : ""}
-                borderColor={"green"}
+                borderColor={"blue.300"}
                 _hover={"unset"}
+                boxShadow={!misc ? "4px 5px 3px 1px rgba(0,0,0,0.75)" : ""}
+                aria-label="see details weight, height, types"
                 onClick={() => {
                   setStats(false)
                   setLevel(false)
                   setMisc(!misc)
                   setMachine(false)
                 }}
-                boxShadow={!misc ? "4px 5px 3px 1px rgba(0,0,0,0.75)" : ""}
               >
                 <Text fontSize="md">
                   <TbListDetails fontSize={"xl"}></TbListDetails>
@@ -124,9 +127,10 @@ export default function PrintDetails({ name, url, compare }) {
                 w="30px"
                 bg={!stats ? "white" : "rgba(0,0,0,0.45)"}
                 border={stats ? "2px" : ""}
-                borderColor={"green"}
+                borderColor={"blue.300"}
                 _hover={"unset"}
                 boxShadow={!stats ? "4px 5px 3px 1px rgba(0,0,0,0.75)" : ""}
+                aria-label="see the general stats"
                 onClick={() => {
                   setStats(!stats)
                   setLevel(false)

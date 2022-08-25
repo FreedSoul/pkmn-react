@@ -4,6 +4,7 @@ import { useState, useRef } from "react"
 import Pokemon from "../components/pokemon"
 import { DebounceInput } from "react-debounce-input"
 import Link from "next/link"
+import { MdCompare } from "react-icons/md"
 import { Flex, Heading, Stack, Box, Spacer,Input, VStack,Image } from "@chakra-ui/react"
 
 export default function Home() {
@@ -22,6 +23,8 @@ export default function Home() {
       <Flex>
         <Box
           p="2"
+          ml="25px"
+          borderRadius={"5px"}
           width="140px"
           bg={"red.500"}
           border={"2px"}
@@ -34,13 +37,17 @@ export default function Home() {
         <Spacer />
         <Box
           p="2"
-          width="140px"
+          mr="25px"
+          borderRadius={"5px"}
+          width="150px"
           bg={"blue.500"}
           border={"2px"}
           borderColor={"white"}
         >
           <Link href="/compare">
-            <a>let&lsquo;s compare pokemons!</a>
+            <a>
+              let&lsquo;s compare pokemons!
+            </a>
           </Link>
         </Box>
       </Flex>
@@ -66,9 +73,8 @@ export default function Home() {
           borderColor={"black"}
           focusBorderColor="black"
           color={"black"}
-          
           position={"relative"}
-          right={["16vw","10vw", "10vw", "9vw"]}
+          right={["16vw", "10vw", "10vw", "9vw"]}
           top={"20px"}
           size={["xs", "sm", "sm"]}
           fontSize={["sm", "sm"]}

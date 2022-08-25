@@ -119,6 +119,8 @@ export default function WhatPkmn() {
       <Flex>
         <Box
           p="2"
+          ml="25px"
+          borderRadius={"5px"}
           width="140px"
           bg={"red.500"}
           border={"2px"}
@@ -131,6 +133,8 @@ export default function WhatPkmn() {
         <Spacer />
         <Box
           p="2"
+          mr="25px"
+          borderRadius={"5px"}
           width="140px"
           bg={"blue.500"}
           border={"2px"}

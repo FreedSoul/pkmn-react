@@ -6,6 +6,10 @@ import {
   ListItem,
   Text,
 } from "@chakra-ui/react"
+import { GiWeightScale } from "react-icons/gi"
+import { CgFormatLineHeight } from "react-icons/cg"
+import { BiIntersect } from "react-icons/bi"
+import { TbHierarchy2 } from "react-icons/tb"
 
 export default function MiscInfo({ details }) {
   // const details = FetchDetails(name, url).details
@@ -65,16 +69,19 @@ export default function MiscInfo({ details }) {
         </Heading>
         <Heading as={"h3"} fontSize={"sm"}>
           Types:
+          <BiIntersect/>
         </Heading>
         {/* <div>{types}</div> */}
         <Center>{types}</Center>
         <Heading as={"h3"} fontSize={"sm"}>
           Abilities:
+          <TbHierarchy2/>
         </Heading>
         {/* <div>{abilities}</div> */}
         <Center flexDirection={"column"}>{abilities}</Center>
         <Heading as={"h3"} fontSize={"sm"}>
           Weight:
+          <GiWeightScale />
         </Heading>
         {/* <li>{weight}</li> */}
         <Text textAlign={"center"} padding={1}>
@@ -82,6 +89,7 @@ export default function MiscInfo({ details }) {
         </Text>
         <Heading as={"h3"} fontSize={"sm"}>
           Height:
+          <CgFormatLineHeight></CgFormatLineHeight>
         </Heading>
         <div>
           {/* <li>{height}</li> */}

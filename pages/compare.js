@@ -2,6 +2,7 @@ import { useState} from "react"
 import Link from "next/link"
 import { RiAddCircleLine } from "react-icons/ri"
 import { BiMinusCircle } from "react-icons/bi"
+
 import {
   Box,
   Button,
@@ -42,6 +43,8 @@ export default function Compare() {
       <Flex>
         <Box
           p="2"
+          ml="15px"
+          borderRadius={"5px"}
           width="140px"
           bg={"red.500"}
           border={"2px"}
@@ -54,6 +57,8 @@ export default function Compare() {
         <Spacer />
         <Box
           p="2"
+          mr="15px"
+          borderRadius={"5px"}
           width="140px"
           bg={"blue.500"}
           border={"2px"}

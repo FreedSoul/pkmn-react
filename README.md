@@ -19,18 +19,19 @@ in a much more concise way avoiding interesting, but not relevant info to play
 - day 4: i realized that until [evolution] was ok, but fetching secuencially wll not work because not all pkmns have 3 evolutions, onwards i had to use a parallel fetching with the evolutions component
 - day 5: pressing a key in the pokemon input, was triggering a fetch for every key i press, resolved using [debounce function](https://blog.logrocket.com/how-and-when-to-debounce-or-throttle-in-react/), and i found that calling a swr hook again after the line 52 throw and error in pokemon.js, seems that is neccesary to call all the swr fetch hooks before the ifs that check error or no data yet
 - day 6 and 7: trying to apply functional programming extracting the json data provided by POKE API, using map and filter in conjunction have a good fit (never forget writting right the syntax of map and filter functs)
-- day 8: trying to updating the initial state of the whatpkmn variable in whatpkmn page, i have to use 2 useEffect because math.random get a rerender loop if use with other states updates 
+- day 8: trying to updating the initial state of the whatpkmn variable in whatpkmn page, i have to use 2 useEffect because math.random get a rerender loop if use with other states updates
 - day 9: learning to use chakra ui, a diferent approach to make css, i realize the power using props as css rules, join with react states
 - day 10: getting done the last details of pokedex index
 - day 11: added responsive with chakra-ui to pokedex index
 - day 12: working on compare page 80%, reutilizing components from pokedex, with flags to apply conditional rendering
 - day 13: learning the types of filters in css to achieve a black silhouette, i get it with css rule [filter: brightness(0)], fixing page whatpkmn view and adding state to control filter activation
+- day 14: adjusting some visual bugs in mobile browsers, adding backgrounds
 
 ## reminder
 
 - remember when passing functions as props to child just send the reference like [theprop={handlerX}] or to send arguments use [theprop={()=>handlerX(...args)}]never use [theprop={handlerX()}] <-- this make the function to inmediately being executed in every rerender
 - how do you pass data from the child to parent?, using callbacks
-- icons react-icons, --GiCompactDisc, --GiCrossedSwords, --BsArrowRepeat, --CgArrowUpR, --ImStatsBars, abilites: TbHierarchy2, add pkmn: RiAddCircleLine, GiWeightScale, CgFormatLineHeight, types: BiIntersect - BsIntersect, page compare: MdCompare, page whatpkmn: BsQuestionSquareFill - BsQuestionDiamond - GiDominoMask - FaMask, details: TbListDetails
+- icons react-icons, --GiCompactDisc, --GiCrossedSwords, --BsArrowRepeat, --CgArrowUpR, --ImStatsBars, abilites: --TbHierarchy2, add pkmn: --RiAddCircleLine, --GiWeightScale, --CgFormatLineHeight, types: BiIntersect - BsIntersect
 - make children relative to parent #parent{position:relative} #children{postion:absolute,top:0...} [more](https://stackoverflow.com/questions/5209814/can-i-position-an-element-fixed-relative-to-parent)
 - to fix the blank line space in background in mobile view ~320px, look line 7,8,9 in globals.css (work in chrome, not necessary in firefox) [link to solution](https://stackoverflow.com/questions/4617872/white-space-showing-up-on-right-side-of-page-when-background-image-should-extend)
 - to do: add evolution arrow with triggers[]=>[]=>[], history of compared pkmns (localstorage), change the bg color of pokedex depends of pkmn type, in whatpkmn page add a system that count fail/success
