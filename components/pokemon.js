@@ -4,8 +4,9 @@ import styles from "../styles/Home.module.css"
 import PrintPkmn from "./PrintPkmn"
 import FetchPkdxData from "./FetchPkdxData"
 import PrintDetails from "./PrintDetails"
-import { Box, Center, Container, Flex, Spacer, Spinner, Text } from "@chakra-ui/react"
+import { Box, Button, Center, Container, Flex, Spacer, Spinner, Text } from "@chakra-ui/react"
 import PrintEvo from "./PrintEvo"
+import { useState } from "react"
 
 export const fetcher = (url) => {
   // console.log(url)
@@ -41,6 +42,7 @@ export default function Pokemon({ name, url, newSearch }) {
   //! day 2
   //? struggling with objects passed as props,func argument is obj name,
   //? prop in the call of component is the key inside object, to avoid this, use destructuring func({props})
+  const [showevolutions, setShowevolutions] = useState(false)
 
   const { data: pkmn, error: pkmnError } = useSWR(`${url}${name}`, fetcher, {
     revalidateOnFocus: false,
@@ -98,19 +100,38 @@ export default function Pokemon({ name, url, newSearch }) {
   return (
     <>
       <Flex direction={"column"}>
-        <Center >
+        <Center>
           {/* serached pkmn */}
           <PrintPkmn name={pkmn.name} urlimg={url}>
             <PrintDetails name={pkmn.name} url={url} />
           </PrintPkmn>
+          <Button
+            w={"100px"}
+            h="30px"
+            bg={"white"}
+            position={"absolute"}
+            top={["1000px", "630px", "700px", "700px"]}
+            right={["35VW", "64VW", "55vw", "55vw"]}
+            border={""}
+            borderColor={"blue.300"}
+            _hover={"unset"}
+            boxShadow={"4px 5px 3px 1px rgba(0,0,0,0.75)"}
+            aria-label="see Evolutions"
+            onClick={() => {
+              setShowevolutions(!showevolutions)
+            }}
+          >
+            <Text fontSize="md">{"Evolutions"}</Text>
+          </Button>
         </Center>
+        {showevolutions && (
           <Flex
             direction={["column", "column", "row", "row"]}
             justifyContent={"space-around"}
             alignItems={"center"}
           >
             <PrintEvo name={EvoName} urlimg={url} newSearch={newSearch} />
-            
+
             {EvoName2 && (
               <PrintEvo name={EvoName2} urlimg={url} newSearch={newSearch} />
             )}
@@ -118,7 +139,7 @@ export default function Pokemon({ name, url, newSearch }) {
               <PrintEvo name={EvoName3} urlimg={url} newSearch={newSearch} />
             )}
           </Flex>
-        
+        )}
       </Flex>
     </>
   )

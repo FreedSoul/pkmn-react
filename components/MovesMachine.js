@@ -5,10 +5,15 @@ import {
   HStack,
   Progress,
   Spacer,
+  chakra,
 } from "@chakra-ui/react"
+import { motion, isValidMotionProp } from "framer-motion"
 
 export default function movesMachine({ details }) {
   // const details = FetchDetails(name, url).details
+  const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
+  })
 
   const movesMachine = details?.moves
     .map((moveItem) => {
@@ -34,27 +39,41 @@ export default function movesMachine({ details }) {
 
   return (
     <>
-      <Container
+      <ChakraBox
+        h="fit-content"
+        w={["300px", "250px", "250px", "350px"]}
+        animate={{
+          scale: [1, 1, 1.5, 1, 1],
+          x: '0vw',
+          opacity: 1,
+          rotate: [0, 0, 270, 270, 0],
+          borderRadius: ["20%", "20%", "50%", "50%", "8.3%"],
+        }}
+        transition={{
+          duration: 2,
+          // x: 100,
+          x: '100vw',
+          ease: "easeInOut",
+          opacity: 0.5,
+        }}
         bg={"rgba(0,255,148,0.6)"}
+        border={"2px"}
+        borderRadius="8.3"
         // position={"absolute"}
         // top={"-40px"}
         // left={"250px"}
         // mt="110"
         // position={"static"}
-        h="fit-content"
-        w={["300px", "250px", "250px", "350px"]}
-        border={"2px"}
-        borderRadius="8.3"
       >
         <Heading as={"h3"} fontSize={"lg"} textAlign="center">
           Moves Machine
         </Heading>
         <Box fontSize={"12px"}>
-          <ul style={{ listStyleType:'circle',columns: "3" }}>
+          <ul style={{ listStyleType: "circle", columns: "3" }}>
             {movesMachine}
           </ul>
         </Box>
-      </Container>
+      </ChakraBox>
     </>
   )
 }

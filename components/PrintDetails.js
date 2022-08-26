@@ -7,6 +7,7 @@ import {
   Button,
   Flex,
   HStack,
+  Show,
   Text,
   VStack,
 } from "@chakra-ui/react"
@@ -172,24 +173,7 @@ export default function PrintDetails({ name, url, compare }) {
             {level && <MovesLevel details={details} />}
             {machine && <MovesMachine details={details} />}
           </Flex>
-          {/* </Hide>
-          <Show breakpoint="(max-width: 480px)">
-            <Flex
-              direction={
-                compare
-                  ? ["row", "row", "row", "row"]
-                  : ["column", "column", "row", "row"]
-              }
-              position={"absolute"}
-              top={"200px"}
-              left={"0px"}
-            >
-              {misc && <MiscInfo details={details} />}
-              {stats && <ShowStats details={details} />}
-              {level && <MovesLevel details={details} />}
-              {machine && <MovesMachine details={details} />}
-            </Flex>
-          </Show> */}
+          
         </>
       )}
     </>

@@ -7,6 +7,7 @@ import {
   Heading,
   HStack,
   Image,
+  Text,
   VStack,
 } from "@chakra-ui/react"
 import Link from "next/link"
@@ -19,6 +20,22 @@ export default function PrintEvo(props) {
   return (
     <>
       {props.name && (
+        <>
+        {/* <Box
+          h={"30px"}
+          w="30px"
+          bg={"white"}
+          border={""}
+          borderColor={"blue.300"}
+          _hover={"unset"}
+          boxShadow={"4px 5px 3px 1px rgba(0,0,0,0.75)" }
+          aria-label="see Evolutions"
+          // onClick={() => {}}
+        >
+          <Text fontSize="md">
+          {"=>"}
+          </Text>
+        </Box> */}
         <Flex
           direction={"column"}
           mt="160px"
@@ -29,60 +46,57 @@ export default function PrintEvo(props) {
           borderRadius="8.3"
           position={"relative"}
         >
-          <Image
-            width={"300px"}
-            height={"100px"}
-            position={"absolute"}
-            top="-60px"
-            // boxSize={"100px"}
-            src={"/pokedex-edge-top.svg"}
-            alt={props.name}
-            // layout={"fill"}
-          ></Image>
-          <Image
-            width={"300px"}
-            height={"100px"}
-            position={"absolute"}
-            top="130px"
-            src={"/pokedex-edge-bot.svg"}
-            alt={props.name}
-            // layout={"fill"}
-          ></Image>
-          <Center>
-            <Flex
-              alignItems={"center"}
-              direction={"column"}
-              w="100px"
-              h="100px"
-              mt={10}
-            >
-              <Button
-                // h={"510px"}
-                w={"calc(100%+5px)"}
-                bg={"rgba(0,0,0,0.45)"}
-                textDecorationLine={"underline"}
-                color={"white"}
-                border={"1px"}
-                borderColor={"white"}
-                _hover={{bg:'cyan.400'}}
-                boxShadow={"4px 5px 3px 1px rgba(0,0,0,0.75)"}
-                onClick={() => props.newSearch(pruebaName)}
+            <Image
+              width={"300px"}
+              height={"100px"}
+              position={"absolute"}
+              top={"-60px"}
+              src={"/pokedex-edge-top.svg"}
+              alt={props.name}
+            ></Image>
+            <Image
+              width={"300px"}
+              height={"100px"}
+              position={"absolute"}
+              top="130px"
+              src={"/pokedex-edge-bot.svg"}
+              alt={props.name}
+            ></Image>
+            <Center>
+              <Flex
+                alignItems={"center"}
+                direction={"column"}
+                w="100px"
+                h="100px"
+                mt={10}
               >
-                {props.name}
-              </Button>
-              {/* className={styles.pkmnimg} */}
-              <Box maxW="md" h={"100px"} w={"100px"}>
-                <Image
-                  boxSize={"100px"}
-                  src={pkmn.pkdx?.sprites?.front_default ?? "/pokedex-icon.png"}
-                  alt={props.name}
-                  layout={"fill"}
-                ></Image>
-              </Box>
-            </Flex>
-          </Center>
-          {/* {children} */}
-        </Flex>
+                <Button
+                  // h={"510px"}
+                  w={"calc(100%+5px)"}
+                  bg={"rgba(0,0,0,0.45)"}
+                  textDecorationLine={"underline"}
+                  color={"white"}
+                  border={"1px"}
+                  borderColor={"white"}
+                  _hover={{ bg: 'cyan.400' }}
+                  boxShadow={"4px 5px 3px 1px rgba(0,0,0,0.75)"}
+                  onClick={() => props.newSearch(pruebaName)}
+                >
+                  {props.name}
+                </Button>
+                <Box maxW="md" h={"100px"} w={"100px"}>
+                  <Image
+                    boxSize={"100px"}
+                    src={pkmn.pkdx?.sprites?.front_default ?? "/pokedex-icon.png"}
+                    alt={props.name}
+                    layout={"fill"}
+                  ></Image>
+                </Box>
+              </Flex>
+            </Center>
+            {/* {children} */}
+          </Flex>
+          </>
       )}
     </>
   )
