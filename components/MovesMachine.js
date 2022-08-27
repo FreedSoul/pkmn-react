@@ -43,27 +43,25 @@ export default function movesMachine({ details }) {
         h="fit-content"
         w={["300px", "250px", "250px", "350px"]}
         animate={{
-          scale: [1, 1, 1.5, 1, 1],
-          x: '0vw',
-          opacity: 1,
-          rotate: [0, 0, 270, 270, 0],
-          borderRadius: ["20%", "20%", "50%", "50%", "8.3%"],
+          // scale: [1, 1, 1, 1, 1],
+          x: "0px",
+          opacity: [0,1],
+          // duration: 7,
+        }}
+        initial={{
+          x:'-400px',
         }}
         transition={{
-          duration: 2,
-          // x: 100,
-          x: '100vw',
+          // duration: 0.5,
+          type:"spring",
           ease: "easeInOut",
-          opacity: 0.5,
+          opacity: [0,0.4,0.4,0.7,1],
+          
         }}
         bg={"rgba(0,255,148,0.6)"}
         border={"2px"}
         borderRadius="8.3"
-        // position={"absolute"}
-        // top={"-40px"}
-        // left={"250px"}
-        // mt="110"
-        // position={"static"}
+        padding={'10px'}
       >
         <Heading as={"h3"} fontSize={"lg"} textAlign="center">
           Moves Machine

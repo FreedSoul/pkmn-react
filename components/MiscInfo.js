@@ -5,14 +5,20 @@ import {
   Heading,
   ListItem,
   Text,
+  chakra,
 } from "@chakra-ui/react"
 import { GiWeightScale } from "react-icons/gi"
 import { CgFormatLineHeight } from "react-icons/cg"
 import { BiIntersect } from "react-icons/bi"
 import { TbHierarchy2 } from "react-icons/tb"
+import { motion, isValidMotionProp } from "framer-motion"
 
 export default function MiscInfo({ details }) {
   // const details = FetchDetails(name, url).details
+  
+  const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
+  })
 
   const types = details?.types
     .map((H) => H.type.name)
@@ -53,12 +59,25 @@ export default function MiscInfo({ details }) {
 
   return (
     <>
-      <Container
+      <ChakraBox
+        animate={{
+          // scale: [1, 1, 1, 1, 1],
+          x: "0px",
+          opacity: [0,1],
+          // duration: 7,
+        }}
+        initial={{
+          x:'-400px',
+        }}
+        transition={{
+          // duration: 0.5,
+          type:"spring",
+          ease: "easeInOut",
+          opacity: [0,0.4,0.4,0.7,1],
+          
+        }}
+        padding={'10px'}
         bg={"rgba(0,255,148,0.6)"}
-        // position={"relative"}
-        // top={"-40px"}
-        // left={"250px"}
-        // mt="110"
         w={["300px", "250px", "250px", "350px"]}
         h="fit-content"
         border={"2px"}
@@ -107,7 +126,7 @@ export default function MiscInfo({ details }) {
             {baseExp}
           </Text>
         </div>
-      </Container>
+      </ChakraBox>
     </>
   )
 }

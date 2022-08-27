@@ -5,10 +5,16 @@ import {
   HStack,
   Progress,
   Spacer,
+  chakra,
 } from "@chakra-ui/react"
+import { motion, isValidMotionProp } from "framer-motion"
 
 export default function MovesLevel({ details }) {
   // const details = FetchDetails(name, url).details
+
+  const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
+  })
   
   const movesLevel = details?.moves
     .map((moveItem) => {
@@ -46,19 +52,36 @@ export default function MovesLevel({ details }) {
 
   return (
     <>
-      <Container
+      <ChakraBox
+        animate={{
+          // scale: [1, 1, 1, 1, 1],
+          x: "0px",
+          opacity: [0,1],
+          // duration: 7,
+        }}
+        initial={{
+          x:'-400px',
+        }}
+        transition={{
+          // duration: 0.5,
+          type:"spring",
+          ease: "easeInOut",
+          opacity: [0,0.4,0.4,0.7,1],
+          
+        }}
         bg={"rgba(0,255,148,0.6)"}
         h="fit-content"
         // h={["340px", "360px", "360px", "360px"]}
         w={["300px", "250px", "250px", "350px"]}
         border={"2px"}
         borderRadius="8.3"
+        padding={'10px'}
       >
         <Heading as={"h3"} fontSize={"lg"} textAlign="center">
           Moves Level
         </Heading>
         <div>{movesLevel}</div>
-      </Container>
+      </ChakraBox>
     </>
   )
 }

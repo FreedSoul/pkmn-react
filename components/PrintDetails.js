@@ -165,7 +165,7 @@ export default function PrintDetails({ name, url, compare }) {
             left={
               compare
                 ? ["0px", "0px", "0px", "0px"]
-                : ["0px", "260px", "280px", "300px"]
+                : ["0px", "260px", "300px", "300px"]
             }
           >
             {misc && <MiscInfo details={details} />}
@@ -173,7 +173,6 @@ export default function PrintDetails({ name, url, compare }) {
             {level && <MovesLevel details={details} />}
             {machine && <MovesMachine details={details} />}
           </Flex>
-          
         </>
       )}
     </>

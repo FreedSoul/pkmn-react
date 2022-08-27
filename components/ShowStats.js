@@ -1,9 +1,20 @@
-import { Box, Container, Heading, HStack, Progress, Spacer } from "@chakra-ui/react"
-
-
+import {
+  Box,
+  Container,
+  Heading,
+  HStack,
+  Progress,
+  Spacer,
+  chakra,
+} from "@chakra-ui/react"
+import { motion, isValidMotionProp } from "framer-motion"
 
 export default function MiscInfo({ details }) {
   // const details = FetchDetails(name, url).details
+
+  const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
+  })
 
   const stats = details?.stats.map((statItem, index) => {
     return (
@@ -24,28 +35,36 @@ export default function MiscInfo({ details }) {
     )
   })
 
- 
-    return (
-      <>
-        <Container
-          bg={"rgba(0,255,148,0.6)"}
-          // position={"absolute "}
-          // top={"-40px"}
-          // left={"250px"}
-          // mt="110"
-          h="fit-content"
-          minH={'360px'}
-          w={["300px", "250px", "250px", "350px"]}
-          border={"2px"}
-          borderRadius="8.3"
-        >
-          <div>
-            <Heading as={"h3"} fontSize={"lg"} textAlign="center">
-              Stats
-            </Heading>
-            <div>{stats}</div>
-          </div>
-        </Container>
-      </>
-    )
+  return (
+    <>
+      <ChakraBox
+        animate={{
+          x: "0px",
+          opacity: [0, 1],
+        }}
+        initial={{
+          x: "-400px",
+        }}
+        transition={{
+          type: "spring",
+          ease: "easeInOut",
+          opacity: [0, 0.4, 0.4, 0.7, 1],
+        }}
+        padding={"10px"}
+        bg={"rgba(0,255,148,0.6)"}
+        h="fit-content"
+        minH={"360px"}
+        w={["300px", "250px", "250px", "350px"]}
+        border={"2px"}
+        borderRadius="8.3"
+      >
+        <div>
+          <Heading as={"h3"} fontSize={"lg"} textAlign="center">
+            Stats
+          </Heading>
+          <div>{stats}</div>
+        </div>
+      </ChakraBox>
+    </>
+  )
 }

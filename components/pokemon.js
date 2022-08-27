@@ -4,16 +4,27 @@ import styles from "../styles/Home.module.css"
 import PrintPkmn from "./PrintPkmn"
 import FetchPkdxData from "./FetchPkdxData"
 import PrintDetails from "./PrintDetails"
-import { Box, Button, Center, Container, Flex, Spacer, Spinner, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Center,
+  Container,
+  Flex,
+  Spacer,
+  Spinner,
+  Text,
+  chakra,
+} from "@chakra-ui/react"
 import PrintEvo from "./PrintEvo"
 import { useState } from "react"
+import { motion, isValidMotionProp } from "framer-motion"
 
 export const fetcher = (url) => {
   // console.log(url)
   return fetch(url).then((res) => res.json())
 }
 
-function AnError({text}) {
+function AnError({ text }) {
   return (
     <Box position={"relative"} mt={"130px"} justifyContent={"center"}>
       <Text fontSize={"70px"} zIndex={"50"} textAlign={"center"}>
@@ -23,7 +34,7 @@ function AnError({text}) {
   )
 }
 
-const IsLoading = ({text}) => {
+const IsLoading = ({ text }) => {
   return (
     <Box position={"relative"} mt={"130px"}>
       <Container width={"100%"} h={"550px"} justifyContent={"center"}>
@@ -42,6 +53,11 @@ export default function Pokemon({ name, url, newSearch }) {
   //! day 2
   //? struggling with objects passed as props,func argument is obj name,
   //? prop in the call of component is the key inside object, to avoid this, use destructuring func({props})
+
+  const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
+  })
+
   const [showevolutions, setShowevolutions] = useState(false)
 
   const { data: pkmn, error: pkmnError } = useSWR(`${url}${name}`, fetcher, {
@@ -70,32 +86,28 @@ export default function Pokemon({ name, url, newSearch }) {
   // const Evo = FetchPkdxData(EvoName, url, evolution)
 
   if (pkmnError) {
-      return <AnError text='no pokemon'/>
-      // <Box position={'relative'} mt={'130px'} justifyContent={'center'}>
-      //   <Text fontSize={'70px'} zIndex={'50'} textAlign={'center'}>NO PKMN</Text>
-      // </Box>
+    return <AnError text="no pokemon" />
+    // <Box position={'relative'} mt={'130px'} justifyContent={'center'}>
+    //   <Text fontSize={'70px'} zIndex={'50'} textAlign={'center'}>NO PKMN</Text>
+    // </Box>
   }
   if (!pkmn) {
-    return (
-      <IsLoading text='pkmn cargando...' />
-    )
+    return <IsLoading text="pkmn cargando..." />
   }
   if (speciesError) {
-    return <AnError text='no species'/>
+    return <AnError text="no species" />
   }
   if (!species) {
-    return <IsLoading text='species cargando...'/>
+    return <IsLoading text="species cargando..." />
   }
   if (evolutionError) {
-    return <AnError text={'no evolution to show<'}/>
+    return <AnError text={"no evolution to show<"} />
   }
   if (!evolution) {
-    return <IsLoading text='Loading Evolutions....' />
+    return <IsLoading text="Loading Evolutions...." />
   }
   // console.log(Evo3)
   // console.log(evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name)
-  
-  
 
   return (
     <>
@@ -125,20 +137,37 @@ export default function Pokemon({ name, url, newSearch }) {
           </Button>
         </Center>
         {showevolutions && (
-          <Flex
-            direction={["column", "column", "row", "row"]}
-            justifyContent={"space-around"}
-            alignItems={"center"}
+          <ChakraBox
+            h="fit-content"
+            animate={{
+              opacity: 1,
+              y:0,
+            }}
+            initial={{
+              opacity: 0.1,
+              y:-500,
+            }}
+            transition={{
+              duration: 1,
+              type: "spring",
+              opacity: 0.3,
+            }}
           >
-            <PrintEvo name={EvoName} urlimg={url} newSearch={newSearch} />
+            <Flex
+              direction={["column", "column", "row", "row"]}
+              justifyContent={"space-around"}
+              alignItems={"center"}
+            >
+              <PrintEvo name={EvoName} urlimg={url} newSearch={newSearch} />
 
-            {EvoName2 && (
-              <PrintEvo name={EvoName2} urlimg={url} newSearch={newSearch} />
-            )}
-            {EvoName3 && (
-              <PrintEvo name={EvoName3} urlimg={url} newSearch={newSearch} />
-            )}
-          </Flex>
+              {EvoName2 && (
+                <PrintEvo name={EvoName2} urlimg={url} newSearch={newSearch} />
+              )}
+              {EvoName3 && (
+                <PrintEvo name={EvoName3} urlimg={url} newSearch={newSearch} />
+              )}
+            </Flex>
+          </ChakraBox>
         )}
       </Flex>
     </>
