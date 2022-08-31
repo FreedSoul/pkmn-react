@@ -18,7 +18,7 @@ in a much more concise way avoiding interesting, but not relevant info to play
 - day 3: i couldnt make work the conditional fetching, then i resolved it using a checking if, for every named data [pkmn,species,evolution] [this post helps](https://stackoverflow.com/questions/60375246/cant-access-to-my-data-from-a-swr-fetch-react)
 - day 4: i realized that until [evolution] was ok, but fetching secuencially wll not work because not all pkmns have 3 evolutions, onwards i had to use a parallel fetching with the evolutions component
 - day 5: pressing a key in the pokemon input, was triggering a fetch for every key i press, resolved using [debounce function](https://blog.logrocket.com/how-and-when-to-debounce-or-throttle-in-react/), and i found that calling a swr hook again after the line 52 throw and error in pokemon.js, seems that is neccesary to call all the swr fetch hooks before the ifs that check error or no data yet
-- day 6 and 7: trying to apply functional programming extracting the json data provided by POKE API, using map and filter in conjunction have a good fit (never forget writting right the syntax of map and filter functs)
+- day 6 and 7: trying to apply functional programming extracting the json data provided by POKE API, using map and filter in conjunction have a good fit (never forget writting the syntax of map and filter functs right)
 - day 8: trying to updating the initial state of the whatpkmn variable in whatpkmn page, i have to use 2 useEffect because math.random get a rerender loop if use with other states updates
 - day 9: learning to use chakra ui, a diferent approach to make css, i realize the power using props as css rules, join with react states
 - day 10: getting done the last details of pokedex index
@@ -26,6 +26,8 @@ in a much more concise way avoiding interesting, but not relevant info to play
 - day 12: working on compare page 80%, reutilizing components from pokedex, with flags to apply conditional rendering
 - day 13: learning the types of filters in css to achieve a black silhouette, i get it with css rule [filter: brightness(0)], fixing page whatpkmn view and adding state to control filter activation
 - day 14: adjusting some visual bugs in mobile browsers, adding backgrounds
+- day 15: adding framer motion animations, understanding it jointly with chakra ui
+- day 16: investigating how to add sounds reactively, much more easy that it seems just adding an audio tag html without source as children, but src as props, saving the mp3 in public dir
 
 ## reminder
 

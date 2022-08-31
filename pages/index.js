@@ -45,13 +45,11 @@ export default function Home() {
           borderColor={"white"}
         >
           <Link href="/compare">
-            <a>
-              let&lsquo;s compare pokemons!
-            </a>
+            <a>let&lsquo;s compare pokemons!</a>
           </Link>
         </Box>
       </Flex>
-      <VStack>
+      <VStack >
         <Heading
           as={"h2"}
           zIndex={"1"}
@@ -75,7 +73,7 @@ export default function Home() {
           color={"black"}
           position={"relative"}
           right={["16vw", "10vw", "10vw", "9vw"]}
-          top={"20px"}
+          top={"0px"}
           size={["xs", "sm", "sm"]}
           fontSize={["sm", "sm"]}
           placeholder="enter a pokemon name..."
@@ -89,7 +87,9 @@ export default function Home() {
           width={"100%"}
           height={"150px"}
           position={"absolute"}
-          top="40px"
+          mt={["0px", "20xp", "20px", "0px"]}
+          top={["55px", "55xp", "55px", "50px"]}
+          // top="40px"
           src={"/fut-frame.svg"}
           alt={"frame"}
           // layout={"fill"}

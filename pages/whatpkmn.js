@@ -31,9 +31,9 @@ export default function WhatPkmn() {
   const [pkmnId, setPkmnId] = useState(0)
   // const [winaudio, setWinaudio] = useState(null)
   const url = `https://pokeapi.co/api/v2/pokemon/`
-  const totalpkmns = 905
+  const TOTAL_POKEMONS = 905
   const pkmnInfo = FetchPkdxData(pkmnId, url, pkmnId)
-  const getARandomId = () => Math.floor(Math.random() * totalpkmns)
+  const getARandomId = () => Math.floor(Math.random() * TOTAL_POKEMONS)
 
   useEffect(() => {
     setPkmnId(getARandomId)
@@ -58,61 +58,62 @@ export default function WhatPkmn() {
   //   ) // only call client
   // }, [])
   const handleAnswer = (event) => {
+    Audio.volume=0.1
     const simpleAnswer = event.target.value
     const cleanedAnswer = simpleAnswer.toLowerCase()
     setAnswer(cleanedAnswer)
-  } 
+  }
   console.log(typeof answer)
   const handleRefresh = (e) => {
     setwhatpkmn(pkmnInfo?.pkdx?.name),
-    setPkmnId(getARandomId),
-    setFilter(true),
-    (e.target.value = ""),
-    setAnswer("")
+      setPkmnId(getARandomId),
+      setFilter(true),
+      (e.target.value = ""),
+      setAnswer("")
   }
   const specialNames = [
-    'nidoran-m',
-    'mr-mime',
-    'nidoran-f',
-    'ho-oh',
-    'wormadam-plant',
-    'mime-jr',
-    'porygon-z',
-    'giratina-altered',
-    'deoxys-normal',
-    'basculin-red-striped',
-    'shaymin-land',
-    'darmanitan-standard',
-    'thundurus-incarnate',
-    'keldeo-ordinary',
-    'meowstic-male',
-    'aegislash-shield',
-    'pumpkaboo-average',
-    'gourgeist-average',
-    'tornadus-incarnate',
-    'landorus-incarnate',
-    'meloetta-aria',
-    'type-null',
-    'minior-red - meteor',
-    'mimikyu-disguised',
-    'jangmo-o',
-    'hakamo-o',
-    'kommo-o',
-    'tapu-koko',
-    'tapu-lele',
-    'tapu-fini',
-    'tapu-bulu',
-    'toxtricity-amped',
-    'mr-rime',
-    'eiscue-ice',
-    'indeedee-male',
-    'morpeko-full-belly',
-    'lycanroc-midday',
-    'oricorio-baile',
-    'wishiwashi-solo',
-    'zygarde-50',
-    'urshifu-single-strike',
-    'basculegion-male',
+    "nidoran-m",
+    "mr-mime",
+    "nidoran-f",
+    "ho-oh",
+    "wormadam-plant",
+    "mime-jr",
+    "porygon-z",
+    "giratina-altered",
+    "deoxys-normal",
+    "basculin-red-striped",
+    "shaymin-land",
+    "darmanitan-standard",
+    "thundurus-incarnate",
+    "keldeo-ordinary",
+    "meowstic-male",
+    "aegislash-shield",
+    "pumpkaboo-average",
+    "gourgeist-average",
+    "tornadus-incarnate",
+    "landorus-incarnate",
+    "meloetta-aria",
+    "type-null",
+    "minior-red - meteor",
+    "mimikyu-disguised",
+    "jangmo-o",
+    "hakamo-o",
+    "kommo-o",
+    "tapu-koko",
+    "tapu-lele",
+    "tapu-fini",
+    "tapu-bulu",
+    "toxtricity-amped",
+    "mr-rime",
+    "eiscue-ice",
+    "indeedee-male",
+    "morpeko-full-belly",
+    "lycanroc-midday",
+    "oricorio-baile",
+    "wishiwashi-solo",
+    "zygarde-50",
+    "urshifu-single-strike",
+    "basculegion-male",
   ]
   return (
     <div>
@@ -202,18 +203,11 @@ export default function WhatPkmn() {
               </Slide>
             </>
           )}
+            {whatpkmn === answer && (
+              <audio id="pkmnlvl" src="level-up.mp3" autoPlay/>
+            )}
           <Box>
             <PrintPkmn compare name={pkmnId} urlimg={url} filter={filter} />
-            {/* {whatpkmn === answer && ( */}
-            {/* <audio id="pkmnlvl">
-                <source
-                  autoPlay
-                  src={winaudio}
-                  type="audio/mpeg"
-                />
-                you browser is shit
-              </audio> */}
-            {/* )} */}
           </Box>
           <Box
             padding={"8px"}
