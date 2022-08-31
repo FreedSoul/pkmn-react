@@ -111,41 +111,47 @@ export default function Pokemon({ name, url, newSearch }) {
 
   return (
     <>
-      <Flex direction={"column"}>
+      <Flex direction={"column"} className={"guiaaaaaaaaaaa"}>
         <Center>
           {/* serached pkmn */}
           <PrintPkmn name={pkmn.name} urlimg={url}>
-            <PrintDetails name={pkmn.name} url={url} />
+            <PrintDetails
+              name={pkmn.name}
+              url={url}
+              setShowevolutions={setShowevolutions}
+              showevolutions={showevolutions}
+            />
+            <Button
+              w={"100px"}
+              h="40px"
+              // bg={"white"}
+              position={"absolute"}
+              top={["330px", "350px", "350px", "350px"]}
+              right={["100px", "80px", "100px", "100px"]}
+              _hover={{ fontWeight: "semibold" }}
+              bg={!showevolutions ? "white" : "rgba(0,0,0,0.45)"}
+              border={showevolutions ? "2px" : ""}
+              borderColor={"blue.300"}
+              boxShadow={"4px 5px 3px 1px rgba(0,0,0,0.75)"}
+              aria-label="see Evolutions"
+              onClick={() => {
+                setShowevolutions(!showevolutions)
+              }}
+            >
+              <Text fontSize="md">{"Evolutions"}</Text>
+            </Button>
           </PrintPkmn>
-          <Button
-            w={"100px"}
-            h="30px"
-            bg={"white"}
-            position={"absolute"}
-            top={["1000px", "630px", "700px", "700px"]}
-            right={["35VW", "64VW", "55vw", "55vw"]}
-            border={""}
-            borderColor={"blue.300"}
-            _hover={"unset"}
-            boxShadow={"4px 5px 3px 1px rgba(0,0,0,0.75)"}
-            aria-label="see Evolutions"
-            onClick={() => {
-              setShowevolutions(!showevolutions)
-            }}
-          >
-            <Text fontSize="md">{"Evolutions"}</Text>
-          </Button>
         </Center>
         {showevolutions && (
           <ChakraBox
             h="fit-content"
             animate={{
               opacity: 1,
-              y:0,
+              y: 0,
             }}
             initial={{
               opacity: 0.1,
-              y:-500,
+              y: -500,
             }}
             transition={{
               duration: 1,

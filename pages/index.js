@@ -88,7 +88,7 @@ export default function Home() {
           height={"150px"}
           position={"absolute"}
           mt={["0px", "20xp", "20px", "0px"]}
-          top={["55px", "55xp", "55px", "50px"]}
+          top={"55px"}
           // top="40px"
           src={"/fut-frame.svg"}
           alt={"frame"}

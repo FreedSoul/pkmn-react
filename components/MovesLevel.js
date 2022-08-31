@@ -72,7 +72,7 @@ export default function MovesLevel({ details }) {
         bg={"rgba(0,255,148,0.6)"}
         h="fit-content"
         // h={["340px", "360px", "360px", "360px"]}
-        w={["300px", "250px", "250px", "350px"]}
+        w={["300px", "300px", "250px", "350px"]}
         border={"2px"}
         borderRadius="8.3"
         padding={'10px'}

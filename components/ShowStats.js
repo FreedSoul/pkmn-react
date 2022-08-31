@@ -54,7 +54,7 @@ export default function MiscInfo({ details }) {
         bg={"rgba(0,255,148,0.6)"}
         h="fit-content"
         minH={"360px"}
-        w={["300px", "250px", "250px", "350px"]}
+        w={["300px", "300px", "250px", "350px"]}
         border={"2px"}
         borderRadius="8.3"
       >

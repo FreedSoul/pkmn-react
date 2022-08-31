@@ -159,8 +159,8 @@ export default function PrintDetails({ name, url, compare }) {
             // }
             top={
               compare
-                ? ["170px", "190px", "190px", "190px"]
-                : ["170px", "-215px", "-215px", "-215px"]
+                ? ["180px", "190px", "200px", "200px"]
+                : ["180px", "-215px", "-215px", "-215px"]
             }
             left={
               compare

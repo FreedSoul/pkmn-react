@@ -41,7 +41,7 @@ export default function movesMachine({ details }) {
     <>
       <ChakraBox
         h="fit-content"
-        w={["300px", "250px", "250px", "350px"]}
+        w={["300px", "300px", "250px", "350px"]}
         animate={{
           // scale: [1, 1, 1, 1, 1],
           x: "0px",

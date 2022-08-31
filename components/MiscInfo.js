@@ -63,22 +63,21 @@ export default function MiscInfo({ details }) {
         animate={{
           // scale: [1, 1, 1, 1, 1],
           x: "0px",
-          opacity: [0,1],
+          opacity: [0, 1],
           // duration: 7,
         }}
         initial={{
-          x:'-400px',
+          x: "-400px",
         }}
         transition={{
           // duration: 0.5,
-          type:"spring",
+          type: "spring",
           ease: "easeInOut",
-          opacity: [0,0.4,0.4,0.7,1],
-          
+          opacity: [0, 0.4, 0.4, 0.7, 1],
         }}
-        padding={'10px'}
+        padding={"10px"}
         bg={"rgba(0,255,148,0.6)"}
-        w={["300px", "250px", "250px", "350px"]}
+        w={["300px", "300px", "250px", "350px"]}
         h="fit-content"
         border={"2px"}
         borderRadius="8.3"
@@ -88,13 +87,13 @@ export default function MiscInfo({ details }) {
         </Heading>
         <Heading as={"h3"} fontSize={"sm"}>
           Types:
-          <BiIntersect/>
+          <BiIntersect />
         </Heading>
         {/* <div>{types}</div> */}
         <Center>{types}</Center>
         <Heading as={"h3"} fontSize={"sm"}>
           Abilities:
-          <TbHierarchy2/>
+          <TbHierarchy2 />
         </Heading>
         {/* <div>{abilities}</div> */}
         <Center flexDirection={"column"}>{abilities}</Center>
