@@ -63,7 +63,7 @@ export default function Home() {
         <Input
           as={DebounceInput}
           value={pkname}
-          onChange={(event) => setPkname(event.target.value)}
+          onChange={(event) => setPkname(event.target.value.toLowerCase())}
           variant={"filled"}
           bg="rgba(0,255,148,0.6)"
           zIndex={"1"}
@@ -72,7 +72,7 @@ export default function Home() {
           focusBorderColor="black"
           color={"black"}
           position={"relative"}
-          right={["16vw", "10vw", "10vw", "9vw"]}
+          right={["16vw", "10vw", "10vw", "7vw"]}
           top={"0px"}
           size={["xs", "sm", "sm"]}
           fontSize={["sm", "sm"]}
