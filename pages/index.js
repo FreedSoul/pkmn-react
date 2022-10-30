@@ -1,26 +1,35 @@
-import Head from "next/head"
-import styles from "../styles/Home.module.css"
-import { useState, useRef } from "react"
-import Pokemon from "../components/pokemon"
-import { DebounceInput } from "react-debounce-input"
-import Link from "next/link"
-import { MdCompare } from "react-icons/md"
-import { Flex, Heading, Stack, Box, Spacer,Input, VStack,Image } from "@chakra-ui/react"
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { useState, useRef } from "react";
+import Pokemon from "../components/pokemon";
+import { DebounceInput } from "react-debounce-input";
+import Link from "next/link";
+import { MdCompare } from "react-icons/md";
+import {
+  Flex,
+  Heading,
+  Stack,
+  Box,
+  Spacer,
+  Input,
+  VStack,
+  Image,
+} from "@chakra-ui/react";
 
 export default function Home() {
+  const [pkname, setPkname] = useState("");
 
-  const [pkname, setPkname] = useState('')
-
-  const url = `https://pokeapi.co/api/v2/pokemon/`
+  const url = `https://pokeapi.co/api/v2/pokemon/`;
   // const hola = useRef()
 
   const handleNewPkmn = (name) => {
-    setPkname(name)
-  }
+    setPkname(name);
+  };
 
   return (
     <>
       <Flex>
+        <Link href="/whatpkmn">
         <Box
           p="2"
           ml="25px"
@@ -29,27 +38,28 @@ export default function Home() {
           bg={"red.500"}
           border={"2px"}
           borderColor={"white"}
+          cursor={"pointer"}
         >
-          <Link href="/whatpkmn">
             <a>what&lsquo;s that pokemon?</a>
-          </Link>
         </Box>
+          </Link>
         <Spacer />
-        <Box
-          p="2"
-          mr="25px"
-          borderRadius={"5px"}
-          width="150px"
-          bg={"blue.500"}
-          border={"2px"}
-          borderColor={"white"}
-        >
-          <Link href="/compare">
+        <Link href="/compare">
+          <Box
+            p="2"
+            mr="25px"
+            borderRadius={"5px"}
+            width="150px"
+            bg={"blue.500"}
+            border={"2px"}
+            borderColor={"white"}
+            cursor={'pointer'}
+          >
             <a>let&lsquo;s compare pokemons!</a>
-          </Link>
-        </Box>
+          </Box>
+        </Link>
       </Flex>
-      <VStack >
+      <VStack>
         <Heading
           as={"h2"}
           zIndex={"1"}
@@ -112,5 +122,5 @@ export default function Home() {
         newSearch={handleNewPkmn}
       />
     </>
-  )
+  );
 }
