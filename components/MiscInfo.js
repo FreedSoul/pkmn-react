@@ -12,8 +12,9 @@ import { CgFormatLineHeight } from "react-icons/cg"
 import { BiIntersect } from "react-icons/bi"
 import { TbHierarchy2 } from "react-icons/tb"
 import { motion, isValidMotionProp } from "framer-motion"
+import {backgroundPkmnType} from './BgColors'
 
-export default function MiscInfo({ details }) {
+export default function MiscInfo({ details,type }) {
   // const details = FetchDetails(name, url).details
   
   const ChakraBox = chakra(motion.div, {
@@ -26,7 +27,7 @@ export default function MiscInfo({ details }) {
       return (
         <Box
           padding={1}
-          bg={"green"}
+          bg={backgroundPkmnType[W]}
           borderTopRightRadius={"16"}
           borderBottomLeftRadius={'16'}
           key={index}
@@ -41,7 +42,7 @@ export default function MiscInfo({ details }) {
       <Box
         m='0.5'
         padding={'1'}
-        bg={"green"}
+        bg={backgroundPkmnType[type]}
         borderTopRightRadius={"16"}
         borderBottomLeftRadius={"16"}
         key={index}
@@ -76,7 +77,7 @@ export default function MiscInfo({ details }) {
           opacity: [0, 0.4, 0.4, 0.7, 1],
         }}
         padding={"10px"}
-        bg={"rgba(0,255,148,0.6)"}
+        bg={backgroundPkmnType[type]??"whiteAlpha.700"}
         w={["300px", "300px", "250px", "350px"]}
         h="fit-content"
         border={"2px"}

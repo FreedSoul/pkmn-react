@@ -8,8 +8,9 @@ import {
   chakra,
 } from "@chakra-ui/react"
 import { motion, isValidMotionProp } from "framer-motion"
+import {backgroundPkmnType} from './BgColors'
 
-export default function movesMachine({ details }) {
+export default function movesMachine({ details,type }) {
   // const details = FetchDetails(name, url).details
   const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
@@ -58,10 +59,10 @@ export default function movesMachine({ details }) {
           opacity: [0,0.4,0.4,0.7,1],
           
         }}
-        bg={"rgba(0,255,148,0.6)"}
+        bg={backgroundPkmnType[type]??"whiteAlpha.700"}
         border={"2px"}
         borderRadius="8.3"
-        padding={'10px'}
+        padding={'15px'}
       >
         <Heading as={"h3"} fontSize={"lg"} textAlign="center">
           Moves Machine

@@ -81,6 +81,8 @@ export default function Pokemon({ name, url, newSearch }) {
   const EvoName = evolution?.chain.species.name
   const EvoName2 = evolution?.chain.evolves_to[0]?.species.name
   const EvoName3 = evolution?.chain.evolves_to[0]?.evolves_to[0]?.species.name
+  const type = pkmn?.types[0].type.name
+  console.log(pkmn?.types[0].type.name)
   // const Evo2 = FetchPkdxData(EvoName2, url, evolution)
   // const Evo3 = FetchPkdxData(EvoName3, url, evolution)
   // const Evo = FetchPkdxData(EvoName, url, evolution)
@@ -120,6 +122,7 @@ export default function Pokemon({ name, url, newSearch }) {
               url={url}
               setShowevolutions={setShowevolutions}
               showevolutions={showevolutions}
+              type={type}
             />
             <Button
               w={"100px"}

@@ -8,10 +8,11 @@ import {
   chakra,
 } from "@chakra-ui/react"
 import { motion, isValidMotionProp } from "framer-motion"
+import {backgroundPkmnType} from './BgColors'
 
-export default function MovesLevel({ details }) {
+export default function MovesLevel({ details,type }) {
   // const details = FetchDetails(name, url).details
-
+  console.log(type)
   const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
   })
@@ -69,7 +70,7 @@ export default function MovesLevel({ details }) {
           opacity: [0,0.4,0.4,0.7,1],
           
         }}
-        bg={"rgba(0,255,148,0.6)"}
+        bg={backgroundPkmnType[type]??"whiteAlpha.700"}
         h="fit-content"
         // h={["340px", "360px", "360px", "360px"]}
         w={["300px", "300px", "250px", "350px"]}

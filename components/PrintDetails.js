@@ -20,6 +20,7 @@ import { TbListDetails } from "react-icons/tb"
 import { ImStatsBars } from "react-icons/im"
 import { CgArrowUpR } from "react-icons/cg"
 import { GiCompactDisc } from "react-icons/gi"
+import {backgroundPkmnType} from './BgColors'
 
 function FetchDetails(name, url) {
   const { data, error } = useSWR(name ? `${url}${name}` : null, fetcher)
@@ -31,7 +32,7 @@ function FetchDetails(name, url) {
   }
 }
 
-export default function PrintDetails({ name, url, compare }) {
+export default function PrintDetails({ name, url, compare,type }) {
   // const [misc, setMisc] = useBoolean()
   // const [stats, setStats] = useBoolean()
   // const [level, setLevel] = useBoolean()
@@ -40,7 +41,7 @@ export default function PrintDetails({ name, url, compare }) {
   const [stats, setStats] = useState(true)
   const [level, setLevel] = useState(false)
   const [machine, setMachine] = useState(false)
-  console.log(compare)
+  // console.log(compare)
   const details = FetchDetails(name, url).details
 
   return (
@@ -168,10 +169,10 @@ export default function PrintDetails({ name, url, compare }) {
                 : ["0px", "260px", "300px", "300px"]
             }
           >
-            {misc && <MiscInfo details={details} />}
-            {stats && <ShowStats details={details} />}
-            {level && <MovesLevel details={details} />}
-            {machine && <MovesMachine details={details} />}
+            {misc && <MiscInfo details={details} type={type} />}
+            {stats && <ShowStats details={details} type={type}/>}
+            {level && <MovesLevel details={details} type={type}/>}
+            {machine && <MovesMachine details={details} type={type}/>}
           </Flex>
         </>
       )}
