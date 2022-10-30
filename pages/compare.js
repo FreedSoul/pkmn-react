@@ -41,6 +41,7 @@ export default function Compare() {
   return (
     <div>
       <Flex>
+        <Link href="/">
         <Box
           p="2"
           ml="15px"
@@ -49,12 +50,13 @@ export default function Compare() {
           bg={"red.500"}
           border={"2px"}
           borderColor={"white"}
+          cursor={"pointer"}
         >
-          <Link href="/">
             <a>The pokedex</a>
-          </Link>
         </Box>
+          </Link>
         <Spacer />
+        <Link href="/whatpkmn">
         <Box
           p="2"
           mr="15px"
@@ -63,11 +65,11 @@ export default function Compare() {
           bg={"blue.500"}
           border={"2px"}
           borderColor={"white"}
+          cursor={"pointer"}
         >
-          <Link href="/whatpkmn">
             <a>what&lsquo;s that pokemon?</a>
-          </Link>
         </Box>
+          </Link>
       </Flex>
       <Center>
         <Heading

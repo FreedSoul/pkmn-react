@@ -118,6 +118,7 @@ export default function WhatPkmn() {
   return (
     <div>
       <Flex>
+        <Link href="/">
         <Box
           p="2"
           ml="25px"
@@ -126,12 +127,13 @@ export default function WhatPkmn() {
           bg={"red.500"}
           border={"2px"}
           borderColor={"white"}
+          cursor={"pointer"}
         >
-          <Link href="/">
             <a>The pokedex</a>
-          </Link>
         </Box>
+          </Link>
         <Spacer />
+        <Link href="/compare">
         <Box
           p="2"
           mr="25px"
@@ -140,11 +142,11 @@ export default function WhatPkmn() {
           bg={"blue.500"}
           border={"2px"}
           borderColor={"white"}
+          cursor={"pointer"}
         >
-          <Link href="/compare">
             <a>Let&lsquo;s compare some Pokemons!</a>
-          </Link>
         </Box>
+          </Link>
       </Flex>
       <Center>
         <Heading
