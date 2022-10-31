@@ -15,7 +15,7 @@ export const backgroundPkmnType = {
     psychic: 'linear-gradient(177.03deg, rgba(249,85,135,1.0) -11.97%, rgba(250,192,203,0.6) 57.49%, #FDE6E9 135.64%)',
     ice: 'linear-gradient(177.03deg, rgba(111,190,223,1.0) -11.97%, rgba(100,203,245,0.6) 47.77%, #BDEBFE 136.72%)',
     dragon: 'linear-gradient(179.75deg, rgba(71,138,147,1.0) -19.96%, rgba(86,164,174,0.6) 43.67%, #A2BEC1 138.4%)',
-    dark: 'linear-gradient(177.03deg, rgba(3,7,6,1.0) -11.97%, #0D1211 57.49%, rgba(90,94,93,0.6) 135.64%)',
+    dark: 'linear-gradient(177.03deg, rgba(94,115,108,0.5) -11.97%, rgba(94,115,108,1.0) 57.49%, rgba(90,94,93,0.3) 135.64%)',
     fairy: 'linear-gradient(179.75deg, rgba(151,27,69,1.0) -19.96%, rgba(194,56,103,0.6) 43.67%, #CD7D98 138.4%)',
     unknown: 'linear-gradient(177.03deg, rgba(140,140,140,1.0) -11.97%,rgba(3,3,3,0.6) 57.49%, #E5E5E5 135.64%)',
     shadow: 'linear-gradient(177.03deg, rgba(0,0,0,1.0) -11.97%, rgba(13,13,13,0.6) 57.49%, #5A5A5A 135.64%)',

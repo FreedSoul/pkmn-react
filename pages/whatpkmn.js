@@ -22,6 +22,7 @@ import {
   Text,
   VStack,
   Slide,
+  Image
 } from "@chakra-ui/react"
 
 export default function WhatPkmn() {
@@ -48,15 +49,7 @@ export default function WhatPkmn() {
       setFilter(false)
     }
   }, [whatpkmn, answer])
-  // console.log({filter})
-  // useEffect(() => {
-  //   setWinaudio(
-  //     new Audio(
-  //       // "https://www.myinstants.com/media/sounds/06-caught-a-pokemon.mp3"
-  //       "/level-up.mp3"
-  //     )
-  //   ) // only call client
-  // }, [])
+  
   const handleAnswer = (event) => {
     Audio.volume=0.1
     const simpleAnswer = event.target.value
@@ -178,6 +171,7 @@ export default function WhatPkmn() {
               onClick={handleRefresh}
               fontSize={"44px"}
               leftIcon={<BsArrowRepeat />}
+              zIndex={'dropdown'}
             >
               {/* <BsArrowRepeat>hi</BsArrowRepeat> */}
               <Text fontSize={"sm"}>Other Pokemon</Text>
@@ -208,7 +202,8 @@ export default function WhatPkmn() {
             {whatpkmn === answer && (
               <audio id="pkmnlvl" src="level-up.mp3" autoPlay/>
             )}
-          <Box>
+          <Box position={'relative'} top={'10px'} right={'0px'}>
+            <Image alt="smoke"  objectFit={'cover'} src={'/smoke1.png'} position={'absolute'} top={'160px'} right={'0px'} opacity={'0.95'}/>
             <PrintPkmn compare name={pkmnId} urlimg={url} filter={filter} />
           </Box>
           <Box
